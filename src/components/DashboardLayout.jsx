@@ -16,11 +16,13 @@ import { Link } from 'react-router-dom';
 
 // ________________________________________________
 
-export default class BaseLayout extends Component {
+export default class DashboardLayout extends Component {
   render() {
     return (
       <div className='container'>
-        
+        <nav>
+          
+        </nav>
       </div>
     );
   }
