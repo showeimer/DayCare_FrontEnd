@@ -10,7 +10,10 @@ import { Link } from 'react-router-dom';
 
 // STYLES:
 // ________________________________________________
-
+const Header = styled.div`
+  background: grey;
+  height: 100px;
+`
 
 
 
@@ -20,9 +23,24 @@ export default class DashboardLayout extends Component {
   render() {
     return (
       <div className='container'>
-        <nav>
-          
-        </nav>
+        <Header>
+          <button class="js-menu menu" type="button">
+          	<span class="bar"></span>
+          </button>
+        </Header>
+
+
+<nav>
+	<ul>
+		<li>Link</li>
+		<li>Link</li>
+		<li>Link</li>
+		<li>Link</li>
+	</ul>
+</nav>
+
+
+
       </div>
     );
   }
