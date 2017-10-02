@@ -21,8 +21,9 @@ export default class DashboardLayout extends Component {
     return (
       <div className='container'>
         <nav>
-          
+
         </nav>
+        {this.props.children}
       </div>
     );
   }
