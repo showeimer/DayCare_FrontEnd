@@ -39,6 +39,11 @@ export default class DashboardLayout extends Component {
 	</ul>
 </nav>
 
+<nav>
+
+</nav>
+{this.props.children}
+
 
 
       </div>
