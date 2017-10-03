@@ -196,6 +196,14 @@ class DailyReport extends Component {
           <FieldArray name="naps" component={this.renderNaps} />
         </Fieldset>
 
+        <Fieldset>
+          <legend>Notes For Parents</legend>
+          <Field
+            name="note"
+            component="textarea"
+            type="textarea"
+          />
+        </Fieldset>
         <button>Save</button>
       </form>
     );
