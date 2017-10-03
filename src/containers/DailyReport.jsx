@@ -197,6 +197,34 @@ class DailyReport extends Component {
         </Fieldset>
 
         <Fieldset>
+          <legend>Items I Need</legend>
+          <div>
+            <label>Diapers</label>
+            <Field
+              name="diapers"
+              component="input"
+              type="checkbox"
+            />
+          </div>
+          <div>
+            <label>Wipes</label>
+            <Field
+              name="wipes"
+              component="input"
+              type="checkbox"
+            />
+          </div>
+          <div>
+            <label>Clothes</label>
+            <Field
+              name="clothes"
+              component="input"
+              type="checkbox"
+            />
+          </div>
+        </Fieldset>
+
+        <Fieldset>
           <legend>Notes For Parents</legend>
           <Field
             name="note"
