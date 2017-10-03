@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux'
-import loginReducer from './loginReducer'
+import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+import loginReducer from './loginReducer';
 
 const rootReducer = combineReducers({
-  login: loginReducer
-})
+  login: loginReducer,
+  form: formReducer
+});
 
-export default rootReducer
+export default rootReducer;

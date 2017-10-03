@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 
 class DailyReport extends Component {
   render() {
@@ -10,4 +11,6 @@ class DailyReport extends Component {
   }
 }
 
-export default DailyReport;
+export default reduxForm({
+  form: 'dailyReport'
+})(DailyReport);

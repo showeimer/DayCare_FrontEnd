@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import $ from "jquery";
 
 // Imported Styles:
 import '../index.css';
