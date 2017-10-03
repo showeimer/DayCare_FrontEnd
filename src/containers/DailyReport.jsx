@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { updateReport } from '../actions';
 
 // Styles
 const Fieldset = styled.fieldset`
@@ -254,4 +257,6 @@ class DailyReport extends Component {
 
 export default reduxForm({
   form: 'dailyReport'
-})(DailyReport);
+})(
+  connect(null, { updateReport })(DailyReport)
+);
