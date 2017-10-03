@@ -33,7 +33,7 @@ class DailyReport extends Component {
     return (
       <ul>
         <li>
-          <button type="button" onClick={() => fields.push()}>Add Meal</button>
+          <button type="button" onClick={() => fields.push({})}>Add Meal</button>
         </li>
 
         {fields.map((meal, index) => {
@@ -106,7 +106,7 @@ class DailyReport extends Component {
     return (
       <ul>
         <li>
-          <button type="button" onClick={() => fields.push()}>Add Diaper Change</button>
+          <button type="button" onClick={() => fields.push({})}>Add Diaper Change</button>
         </li>
 
         {fields.map((diaper, index) => {
@@ -149,7 +149,7 @@ class DailyReport extends Component {
     return (
       <ul>
         <li>
-          <button type="button" onClick={() => fields.push()}>Add Nap</button>
+          <button type="button" onClick={() => fields.push({})}>Add Nap</button>
         </li>
 
         {fields.map((nap, index) => {
@@ -177,12 +177,13 @@ class DailyReport extends Component {
   }
 
   renderItemsNeeded() {
+
     return (
       <div>
         <div>
           <label>Diapers</label>
           <Field
-            name="diapers"
+            name="itemsNeeded.diaper"
             component="input"
             type="checkbox"
           />
@@ -190,7 +191,7 @@ class DailyReport extends Component {
         <div>
           <label>Wipes</label>
           <Field
-            name="wipes"
+            name="itemsNeeded.wipes"
             component="input"
             type="checkbox"
           />
@@ -198,7 +199,7 @@ class DailyReport extends Component {
         <div>
           <label>Clothes</label>
           <Field
-            name="clothes"
+            name="itemsNeeded.clothes"
             component="input"
             type="checkbox"
           />
@@ -238,7 +239,7 @@ class DailyReport extends Component {
 
         <Fieldset>
           <legend>Items I Need</legend>
-          {this.renderItemsNeeded()}
+          <FieldArray name="itemsNeeded" component={this.renderItemsNeeded} />
         </Fieldset>
 
         <Fieldset>
