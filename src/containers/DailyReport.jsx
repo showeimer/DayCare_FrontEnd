@@ -45,6 +45,7 @@ class DailyReport extends Component {
                   <option value="lunch">Lunch</option>
                   <option value="dinner">Dinner</option>
                   <option value="snack">Snack</option>
+                  <option value="bottle">Bottle</option>
                 </Field>
               </label>
 
@@ -141,6 +142,37 @@ class DailyReport extends Component {
     )
   }
 
+  renderNaps = ({fields, meta: { error } }) => {
+    return (
+      <ul>
+        <li>
+          <button type="button" onClick={() => fields.push()}>Add Nap</button>
+        </li>
+
+        {fields.map((nap, index) => {
+          return (
+            <Event key={index}>
+              <button type="button" title="Remove Nap" onClick={() => fields.remove(index)}>X</button>
+
+              <Field
+                name={`${nap}.napStart`}
+                type="text"
+                component={this.renderField}
+                label="Time"
+              />
+              <Field
+                name={`${nap}.napEnd`}
+                type="text"
+                component={this.renderField}
+                label="Time"
+              />
+            </Event>
+          )
+        })}
+      </ul>
+    )
+  }
+
   render() {
     const { handleSubmit } = this.props;
 
@@ -155,8 +187,13 @@ class DailyReport extends Component {
         </Fieldset>
 
         <Fieldset>
-          <legend>Diaper</legend>
+          <legend>Diapers</legend>
           <FieldArray name="diapers" component={this.renderDiaper} />
+        </Fieldset>
+
+        <Fieldset>
+          <legend>Naps</legend>
+          <FieldArray name="naps" component={this.renderNaps} />
         </Fieldset>
 
         <button>Save</button>
