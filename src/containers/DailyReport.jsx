@@ -173,11 +173,48 @@ class DailyReport extends Component {
     )
   }
 
+  renderItemsNeeded() {
+    return (
+      <div>
+        <div>
+          <label>Diapers</label>
+          <Field
+            name="diapers"
+            component="input"
+            type="checkbox"
+          />
+        </div>
+        <div>
+          <label>Wipes</label>
+          <Field
+            name="wipes"
+            component="input"
+            type="checkbox"
+          />
+        </div>
+        <div>
+          <label>Clothes</label>
+          <Field
+            name="clothes"
+            component="input"
+            type="checkbox"
+          />
+        </div>
+      </div>
+    )
+  }
+
+  onSubmit(values) {
+    this.props.updateReport(values, () => {
+      this.props.history.push('/dashboard')
+    });
+  }
+
   render() {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h1>{this.props.name}'s Daily Report'</h1>
         <Link to="/dashboard">Back</Link>
 
@@ -198,30 +235,7 @@ class DailyReport extends Component {
 
         <Fieldset>
           <legend>Items I Need</legend>
-          <div>
-            <label>Diapers</label>
-            <Field
-              name="diapers"
-              component="input"
-              type="checkbox"
-            />
-          </div>
-          <div>
-            <label>Wipes</label>
-            <Field
-              name="wipes"
-              component="input"
-              type="checkbox"
-            />
-          </div>
-          <div>
-            <label>Clothes</label>
-            <Field
-              name="clothes"
-              component="input"
-              type="checkbox"
-            />
-          </div>
+          {this.renderItemsNeeded()}
         </Fieldset>
 
         <Fieldset>
