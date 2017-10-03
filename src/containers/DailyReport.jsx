@@ -16,6 +16,10 @@ const Event = styled.div`
   flex-direction: row;
 `;
 
+const Error = styled.div`
+  color: red;
+`
+
 class DailyReport extends Component {
 
   renderField = ({ input, label, type, meta: { touched, error } }) => {
@@ -23,13 +27,16 @@ class DailyReport extends Component {
       <div>
         <div>
           <input {...input} type={type} placeholder={label} />
-          {touched && error && <span> {error} </span>}
         </div>
+        <Error>
+          {touched ? error : ''}
+        </Error>
       </div>
     );
   };
 
-  renderMeal = ({fields, meta: { error } }) => {
+  renderMeal = ({ fields, meta: { touched, error } }) => {
+    console.log(error);
     return (
       <ul>
         <li>
@@ -98,6 +105,7 @@ class DailyReport extends Component {
             </Event>
           )
         })}
+        {touched ? error : ''}
       </ul>
     )
   }
@@ -256,7 +264,32 @@ class DailyReport extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  if(!values.meals) {
+    console.log('nothing');
+  } else {
+    const mealsArrayErrors = [];
+    values.meals.forEach((meal, mealIndex) => {
+      const mealErrors = {};
+      if(!meal || !meal.food) {
+        mealErrors.food = 'Required';
+        mealsArrayErrors[mealIndex] = mealErrors;
+      }
+    });
+
+    if(mealsArrayErrors.length) {
+      errors.meals = mealsArrayErrors;
+    }
+  }
+
+  console.log('Errors:', errors);
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'dailyReport'
 })(
   connect(null, { updateReport })(DailyReport)

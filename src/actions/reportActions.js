@@ -5,6 +5,6 @@ export const updateReport = values => {
 
   return {
     type: UPDATE_REPORT,
-    payload: null
+    payload: values
   }
 }
