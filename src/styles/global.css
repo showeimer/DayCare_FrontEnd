@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|News+Cycle|Nunito');
+
+
+/*      FONTS
+
+font-family: 'Nunito', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'News Cycle', sans-serif;
+font-family: 'Lobster Two', cursive;
+____________________________________________*/
+
+*, *:focus{
+  font-family: 'News Cycle', sans-serif;
+  font-size: 20px;
+  outline: none;
+}
+
+
+.primary-button{
+  height: 50px;
+  width: 100%;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  background: #50E3C2;
+}

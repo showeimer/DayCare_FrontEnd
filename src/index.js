@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/meyers_reset.css'
+import './styles/global.css'
 import './index.css';
 
 // Import Redux
