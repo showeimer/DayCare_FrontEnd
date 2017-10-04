@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 import { updateReport } from '../actions';
 
+import renderField from './form/renderField';
+
 // Styles
 const Fieldset = styled.fieldset`
   border: 1px solid black;
@@ -16,25 +18,11 @@ const Event = styled.div`
   flex-direction: row;
 `;
 
-const Error = styled.div`
-  color: red;
-`
+
 
 class DailyReport extends Component {
 
-  renderField = ({ input, label, type, meta: { touched, error } }) => {
-    return (
-      <div>
-        <div>
-          <input {...input} type={type} placeholder={label} />
-        </div>
-        <Error>
-          {touched ? error : ''}
-        </Error>
-      </div>
-    );
-  };
-
+  // fields and meta are props
   renderMeal = ({ fields, meta: { touched, error } }) => {
     console.log(error);
     return (
@@ -59,17 +47,18 @@ class DailyReport extends Component {
                 </Field>
               </label>
 
+              {/* name of this field will show up as meal[index].food */}
               <Field
                 name={`${meal}.food`}
                 type="text"
-                component={this.renderField}
+                component={renderField}
                 label="Food"
               />
 
               <label>
                 <Field
                   name={`${meal}.amount`}
-                  component={this.renderField}
+                  component={renderField}
                   type="radio"
                   value="all"
                 />
@@ -78,7 +67,7 @@ class DailyReport extends Component {
               <label>
                 <Field
                   name={`${meal}.amount`}
-                  component={this.renderField}
+                  component={renderField}
                   type="radio"
                   value="most"
                 />
@@ -87,7 +76,7 @@ class DailyReport extends Component {
               <label>
                 <Field
                   name={`${meal}.amount`}
-                  component={this.renderField}
+                  component={renderField}
                   type="radio"
                   value="some"
                 />
@@ -96,7 +85,7 @@ class DailyReport extends Component {
               <label>
                 <Field
                   name={`${meal}.amount`}
-                  component={this.renderField}
+                  component={renderField}
                   type="radio"
                   value="none"
                 />
@@ -125,13 +114,13 @@ class DailyReport extends Component {
               <Field
                 name={`${diaper}.time`}
                 type="text"
-                component={this.renderField}
+                component={renderField}
                 label="Time"
               />
               <label>
                 <Field
                   name={`${diaper}.type`}
-                  component={this.renderField}
+                  component={renderField}
                   type="radio"
                   value="dry"
                 />
@@ -140,7 +129,7 @@ class DailyReport extends Component {
               <label>
                 <Field
                   name={`${diaper}.type`}
-                  component={this.renderField}
+                  component={renderField}
                   type="radio"
                   value="wet"
                 />
@@ -149,7 +138,7 @@ class DailyReport extends Component {
               <label>
                 <Field
                   name={`${diaper}.type`}
-                  component={this.renderField}
+                  component={renderField}
                   type="radio"
                   value="bm"
                 />
@@ -177,13 +166,13 @@ class DailyReport extends Component {
               <Field
                 name={`${nap}.napStart`}
                 type="text"
-                component={this.renderField}
+                component={renderField}
                 label="Time"
               />
               <Field
                 name={`${nap}.napEnd`}
                 type="text"
-                component={this.renderField}
+                component={renderField}
                 label="Time"
               />
             </Event>
@@ -235,6 +224,7 @@ class DailyReport extends Component {
     const { handleSubmit } = this.props;
 
     return (
+      // handleSubmit is a redux-form handler
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h1>{this.props.name}'s Daily Report'</h1>
         <Link to="/dashboard">Back</Link>
@@ -348,6 +338,7 @@ function validate(values) {
 
 export default reduxForm({
   validate,
+  // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'dailyReport'
 })(
   connect(null, { updateReport })(DailyReport)
