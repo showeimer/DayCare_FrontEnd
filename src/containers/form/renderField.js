@@ -7,7 +7,7 @@ const Error = styled.div`
 `
 
 // renders general input fields
-const renderField = ({ input, label, type, meta: { touched, error } }) => {
+export const renderField = ({ input, label, type, meta: { touched, error } }) => {
   return (
     <div>
       <div>
@@ -19,5 +19,3 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => {
     </div>
   );
 };
-
-export default renderField;

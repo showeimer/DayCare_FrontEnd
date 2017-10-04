@@ -6,213 +6,17 @@ import styled from 'styled-components';
 
 import { updateReport } from '../actions';
 
-import renderField from './form/renderField';
+import {
+  renderMeal, renderDiaper,
+  renderNaps, renderItemsNeeded,
+  validate } from './form';
 
 // Styles
 const Fieldset = styled.fieldset`
   border: 1px solid black;
 `;
 
-const Event = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-
-
 class DailyReport extends Component {
-
-  // fields and meta are props
-  renderMeal = ({ fields, meta: { touched, error } }) => {
-    console.log(error);
-    return (
-      <ul>
-        <li>
-          <button type="button" onClick={() => fields.push({})}>Add Meal</button>
-        </li>
-
-        {fields.map((meal, index) => {
-          return (
-            <Event key={index}>
-              <button type="button" title="Remove Meal" onClick={() => fields.remove(index)}>X</button>
-
-              <label>
-                <Field name={`${meal}.type`} component='select'>
-                  <option />
-                  <option value="breakfast">Breakfast</option>
-                  <option value="lunch">Lunch</option>
-                  <option value="dinner">Dinner</option>
-                  <option value="snack">Snack</option>
-                  <option value="bottle">Bottle</option>
-                </Field>
-              </label>
-
-              {/* name of this field will show up as meal[index].food */}
-              <Field
-                name={`${meal}.food`}
-                type="text"
-                component={renderField}
-                label="Food"
-              />
-
-              <label>
-                <Field
-                  name={`${meal}.amount`}
-                  component={renderField}
-                  type="radio"
-                  value="all"
-                />
-                All
-              </label>
-              <label>
-                <Field
-                  name={`${meal}.amount`}
-                  component={renderField}
-                  type="radio"
-                  value="most"
-                />
-                Most
-              </label>
-              <label>
-                <Field
-                  name={`${meal}.amount`}
-                  component={renderField}
-                  type="radio"
-                  value="some"
-                />
-                Some
-              </label>
-              <label>
-                <Field
-                  name={`${meal}.amount`}
-                  component={renderField}
-                  type="radio"
-                  value="none"
-                />
-                None
-              </label>
-            </Event>
-          )
-        })}
-        {touched ? error : ''}
-      </ul>
-    )
-  }
-
-  renderDiaper = ({fields, meta: { error } }) => {
-    return (
-      <ul>
-        <li>
-          <button type="button" onClick={() => fields.push({})}>Add Diaper Change</button>
-        </li>
-
-        {fields.map((diaper, index) => {
-          return (
-            <Event key={index}>
-              <button type="button" title="Remove Diaper Change" onClick={() => fields.remove(index)}>X</button>
-
-              <Field
-                name={`${diaper}.time`}
-                type="text"
-                component={renderField}
-                label="Time"
-              />
-              <label>
-                <Field
-                  name={`${diaper}.type`}
-                  component={renderField}
-                  type="radio"
-                  value="dry"
-                />
-                Dry
-              </label>
-              <label>
-                <Field
-                  name={`${diaper}.type`}
-                  component={renderField}
-                  type="radio"
-                  value="wet"
-                />
-                Wet
-              </label>
-              <label>
-                <Field
-                  name={`${diaper}.type`}
-                  component={renderField}
-                  type="radio"
-                  value="bm"
-                />
-                BM
-              </label>
-            </Event>
-          )
-        })}
-      </ul>
-    )
-  }
-
-  renderNaps = ({fields, meta: { error } }) => {
-    return (
-      <ul>
-        <li>
-          <button type="button" onClick={() => fields.push({})}>Add Nap</button>
-        </li>
-
-        {fields.map((nap, index) => {
-          return (
-            <Event key={index}>
-              <button type="button" title="Remove Nap" onClick={() => fields.remove(index)}>X</button>
-
-              <Field
-                name={`${nap}.napStart`}
-                type="text"
-                component={renderField}
-                label="Time"
-              />
-              <Field
-                name={`${nap}.napEnd`}
-                type="text"
-                component={renderField}
-                label="Time"
-              />
-            </Event>
-          )
-        })}
-      </ul>
-    )
-  }
-
-  renderItemsNeeded() {
-
-    return (
-      <div>
-        <div>
-          <label>Diapers</label>
-          <Field
-            name="itemsNeeded.diaper"
-            component="input"
-            type="checkbox"
-          />
-        </div>
-        <div>
-          <label>Wipes</label>
-          <Field
-            name="itemsNeeded.wipes"
-            component="input"
-            type="checkbox"
-          />
-        </div>
-        <div>
-          <label>Clothes</label>
-          <Field
-            name="itemsNeeded.clothes"
-            component="input"
-            type="checkbox"
-          />
-        </div>
-      </div>
-    )
-  }
 
   onSubmit(values) {
     this.props.updateReport(values, () => {
@@ -231,22 +35,22 @@ class DailyReport extends Component {
 
         <Fieldset>
           <legend>Meals</legend>
-          <FieldArray name="meals" component={this.renderMeal} />
+          <FieldArray name="meals" component={renderMeal} />
         </Fieldset>
 
         <Fieldset>
           <legend>Diapers</legend>
-          <FieldArray name="diapers" component={this.renderDiaper} />
+          <FieldArray name="diapers" component={renderDiaper} />
         </Fieldset>
 
         <Fieldset>
           <legend>Naps</legend>
-          <FieldArray name="naps" component={this.renderNaps} />
+          <FieldArray name="naps" component={renderNaps} />
         </Fieldset>
 
         <Fieldset>
           <legend>Items I Need</legend>
-          <FieldArray name="itemsNeeded" component={this.renderItemsNeeded} />
+          <FieldArray name="itemsNeeded" component={renderItemsNeeded} />
         </Fieldset>
 
         <Fieldset>
@@ -261,79 +65,6 @@ class DailyReport extends Component {
       </form>
     );
   }
-}
-
-function validate(values) {
-  const errors = {};
-
-  if(!values.meals) {
-    console.log('No meals errors');
-  } else {
-    const mealsArrayErrors = [];
-    values.meals.forEach((meal, mealIndex) => {
-      const mealErrors = {};
-      if(!meal || !meal.food) {
-        mealErrors.food = 'Required';
-        mealsArrayErrors[mealIndex] = mealErrors;
-      }
-
-      if (!meal || !meal.type) {
-        mealErrors.type = 'Required';
-        mealsArrayErrors[mealIndex] = mealErrors;
-      }
-    });
-
-    if(mealsArrayErrors.length) {
-      errors.meals = mealsArrayErrors;
-    }
-  }
-
-  if(!values.diapers) {
-    console.log('No diapers errors');
-  } else {
-    const diapersArrayErrors = [];
-    values.diapers.forEach((diaper, diaperIndex) => {
-      const diaperErrors = {};
-      if(!diaper || !diaper.time) {
-        diaperErrors.time = 'Required';
-        diapersArrayErrors[diaperIndex] = diaperErrors;
-      }
-
-      if (!diaper || !diaper.type) {
-        diaperErrors.type = 'Required';
-        diapersArrayErrors[diaperIndex] = diaperErrors;
-      }
-    });
-
-    if(diapersArrayErrors.length) {
-      errors.diapers = diapersArrayErrors;
-    }
-  }
-
-  if(!values.naps) {
-    console.log('nothing');
-  } else {
-    const napsArrayErrors = [];
-    values.naps.forEach((nap, napIndex) => {
-      const napErrors = {};
-      if(!nap || !nap.napStart) {
-        napErrors.napStart = 'Required';
-        napsArrayErrors[napIndex] = napErrors;
-      }
-
-      if (!nap || !nap.napEnd) {
-        napErrors.napEnd = 'Required';
-        napsArrayErrors[napIndex] = napErrors;
-      }
-    });
-
-    if(napsArrayErrors.length) {
-      errors.naps = napsArrayErrors;
-    }
-  }
-
-  console.log('Errors:', errors);
-  return errors;
 }
 
 export default reduxForm({
