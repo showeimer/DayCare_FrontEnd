@@ -1,7 +1,8 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 // import validate from './validate';
 import { renderField } from '../form';
+import { renderGroups } from './form';
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error
@@ -14,31 +15,9 @@ const GroupInfo = props => {
   const { handleSubmit, previousPage } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="email" type="email" component={renderField} label="Email" />
-      <div>
-        <label>Sex</label>
-        <div>
-          <label>
-            <Field
-              name="sex"
-              component="input"
-              type="radio"
-              value="male"
-            />{' '}
-            Male
-          </label>
-          <label>
-            <Field
-              name="sex"
-              component="input"
-              type="radio"
-              value="female"
-            />{' '}
-            Female
-          </label>
-          <Field name="sex" component={renderError} />
-        </div>
-      </div>
+
+      <FieldArray name="groups" component={renderGroups} />
+
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
