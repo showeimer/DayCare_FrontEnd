@@ -1,50 +1,16 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 // import validate from './validate';
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet']
 
-const renderColorSelector = ({ input, meta: { touched, error } }) =>
-  <div>
-    <select {...input}>
-      <option value="">Select a color...</option>
-      {colors.map(val =>
-        <option value={val} key={val}>
-          {val}
-        </option>
-      )}
-    </select>
-    {touched &&
-      error &&
-      <span>
-        {error}
-      </span>}
-  </div>
+import { renderChildren } from './form';
 
 const ChildInfo = props => {
   const { handleSubmit, pristine, previousPage, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Favorite Color</label>
-        <Field name="favoriteColor" component={renderColorSelector} />
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
-        <div>
-          <Field
-            name="employed"
-            id="employed"
-            component="input"
-            type="checkbox"
-          />
-        </div>
-      </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea" placeholder="Notes" />
-        </div>
-      </div>
+
+      <FieldArray name="children" component={renderChildren} />
+
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
