@@ -25,3 +25,30 @@ ____________________________________________*/
   color: #000;
   background: #50E3C2;
 }
+
+.primary-form{
+  background: #562C40;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+  font-family: 'News Cycle', sans-serif;
+}
+
+.primary-form div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary-form label{
+  margin: 10px 0px;
+}
+
+.primary-form input{
+  text-align: center;
+  outline: none;
+  border: 0;
+  margin: 10px 0px;
+}

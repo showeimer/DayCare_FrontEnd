@@ -7,7 +7,7 @@ const DaycareInfo = props => {
   const { handleSubmit } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='primary-form'>
       <label>What is the name of your daycare?</label>
       <Field
         name="daycareName"
@@ -57,7 +57,7 @@ const DaycareInfo = props => {
         label="password"
       />
       <div>
-        <button type="submit" className="next">
+        <button type="submit" className="next primary-button">
           Next
         </button>
       </div>
