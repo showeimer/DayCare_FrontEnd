@@ -133,6 +133,15 @@ class DailyReport extends Component {
                   name={`${diaper}.type`}
                   component={this.renderField}
                   type="radio"
+                  value="dry"
+                />
+                Dry
+              </label>
+              <label>
+                <Field
+                  name={`${diaper}.type`}
+                  component={this.renderField}
+                  type="radio"
                   value="wet"
                 />
                 Wet
