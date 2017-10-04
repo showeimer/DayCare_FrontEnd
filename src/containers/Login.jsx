@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { emailChanged, passwordChanged } from '../actions'
 
 // Imported Styles:
-
+import '../styles/global.css'
 // Imported Images:
 
 // Import Router
@@ -14,6 +14,42 @@ import { Link } from 'react-router-dom';
 
 // STYLES:
 // ________________________________________________
+const Div = styled.div`
+  height: 100vh;
+  background: #562C40;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`
+const Form = styled.form`
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  input{
+    outline: none;
+    height: 50px;
+    width: 270px;
+    text-align: center;
+    border: 0;
+    border-radius: 10px;
+  }
+`
+const H1 = styled.h1`
+  color: #fff;
+  margin: 130px 0px;
+  font-size: 75px;
+  font-family: 'Lobster Two', cursive;
+  &:after ${H1}{
+    content: "";
+    display: block;
+    width: 120px;
+    border: solid 2px #50E3C2;
+    margin: auto;
+  }
+
+`
 
 
 
@@ -34,16 +70,14 @@ import { Link } from 'react-router-dom';
 
   render() {
     return (
-      <div className='container'>
-        <h1>Login Page</h1>
-        <form>
-          <label>Email</label>
-          <input onChange={this.handleEmailChange.bind(this)} type='email' name='email' placeholder='Email'/>
-          <label>Password</label>
+      <Div className='container'>
+        <H1>inForm.</H1>
+        <Form>
+          <input onChange={this.handleEmailChange.bind(this)} type='email' name='email' placeholder='email'/>
           <input onChange={this.handlePasswordChange.bind(this)} type='password' name='password' placeholder='password'/>
-          <button>Login</button>
-        </form>
-      </div>
+          <button className='primary-button'>Login</button>
+        </Form>
+      </Div>
     );
   }
 }
