@@ -1,15 +1,14 @@
 import React from 'react';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { FieldArray, reduxForm } from 'redux-form';
 // import validate from './validate';
-import { renderField } from '../form';
 import { renderGroups } from './form';
 
-const renderError = ({ meta: { touched, error } }) =>
-  touched && error
-    ? <span>
-        {error}
-      </span>
-    : false
+// const renderError = ({ meta: { touched, error } }) =>
+//   touched && error
+//     ? <span>
+//         {error}
+//       </span>
+//     : false
 
 const GroupInfo = props => {
   const { handleSubmit, previousPage } = props

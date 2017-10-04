@@ -16,7 +16,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // Import Components
 import DashboardLayout from './components/DashboardLayout';
 import Login from './containers/Login';
-import RegistrationForm from './containers/registration/RegistrationForm';
+import Registration from './containers/Registration';
 import Dashboard from './containers/Dashboard';
 import Group from './containers/Group';
 import DailyReport from './containers/DailyReport';
@@ -29,7 +29,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Login}/>
-          <Route path ="/registration" component={RegistrationForm} />
+          <Route path ="/registration" component={Registration} />
           <DashboardLayout>
             <Route path="/dashboard/:group/:id" component={DailyReport}/>
             <Route path="/dashboard/:group" component={Group}/>

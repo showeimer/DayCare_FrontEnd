@@ -1,10 +1,11 @@
 import React from 'react';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { FieldArray, reduxForm } from 'redux-form';
 // import validate from './validate';
 
 import { renderChildren } from './form';
 
 const ChildInfo = props => {
+
   const { handleSubmit, pristine, previousPage, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
