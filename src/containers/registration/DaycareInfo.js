@@ -8,17 +8,53 @@ const DaycareInfo = props => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <label>What is the name of your daycare?</label>
       <Field
-        name="firstName"
+        name="daycareName"
         type="text"
         component={renderField}
-        label="First Name"
+        label="Name of your daycare"
+      />
+      <label>Daycare Address:</label>
+      <Field
+        name="address.street"
+        type="text"
+        component={renderField}
+        label="Street"
       />
       <Field
-        name="lastName"
+        name="address.city"
         type="text"
         component={renderField}
-        label="Last Name"
+        label="City"
+      />
+      <Field
+        name="address.state"
+        type="text"
+        component={renderField}
+        label="State"
+      />
+      <Field
+        name="address.zip"
+        type="text"
+        component={renderField}
+        label="Zipcode"
+      />
+
+      <label>Daycare Email:</label>
+      <Field
+        name="email"
+        type="email"
+        component={renderField}
+        label="email@daycare.com"
+      />
+
+      <label>Password:</label>
+      <Field
+        name="password"
+        type="text"
+        component={renderField}
+        label="password"
       />
       <div>
         <button type="submit" className="next">
