@@ -12,14 +12,26 @@ import { Link } from 'react-router-dom';
 // ________________________________________________
 const Header = styled.div`
   position: relative;
-  background: grey;
+  background: #fff;
+  width: 100%;
   height: 100px;
   z-index: -10;
-  h1{
-    font-size: 20px;
+`
+const H1 = styled.h1`
+  position: absolute;
+  font-size: 40px;
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+  font-family: 'Lobster Two', cursive;
+  &:after ${H1}{
+    content: "";
+    display: block;
+    width: 38px;
+    border: solid 2px #50E3C2;
+    margin: auto;
   }
 `
-
 
 
 // ________________________________________________
@@ -58,7 +70,7 @@ export default class DashboardLayout extends Component {
           	</ul>
           </nav>
           <Header>
-            <h1>My App</h1>
+            <H1>inForm.</H1>
           </Header>
 
       {this.props.children}

@@ -39,16 +39,15 @@ const Form = styled.form`
 const H1 = styled.h1`
   color: #fff;
   margin: 130px 0px;
-  font-size: 75px;
+  font-size: 50px;
   font-family: 'Lobster Two', cursive;
   &:after ${H1}{
     content: "";
     display: block;
-    width: 120px;
+    width: 48px;
     border: solid 2px #50E3C2;
     margin: auto;
   }
-
 `
 
 

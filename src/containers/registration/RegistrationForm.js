@@ -27,12 +27,17 @@ class RegistrationForm extends Component {
     const { page } = this.state
     return (
       <div>
-        {page === 1 && <DaycareInfo onSubmit={this.nextPage} />}
+        {page === 1 &&
+          <DaycareInfo
+            onSubmit={this.nextPage}
+          />}
+
         {page === 2 &&
           <GroupInfo
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
           />}
+
         {page === 3 &&
           <ChildInfo
             previousPage={this.previousPage}
