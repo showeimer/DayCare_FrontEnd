@@ -14,7 +14,13 @@ const H1 = styled.h1`
   font-size: 50px;
 `
 const GroupsContainer = styled.div`
-  display: flex
+  padding-top: 40px;
+  display: flex;
+  height: 300px;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
 `
 
 class Dashboard extends Component {

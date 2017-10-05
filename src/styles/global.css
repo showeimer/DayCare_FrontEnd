@@ -30,6 +30,17 @@ body {
   height: 100vh;
 }
 
+.group-container{
+  background: white;
+  height: 50px;
+  width: 200px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
 .primary-button{
   height: 50px;
   width: 100%;
