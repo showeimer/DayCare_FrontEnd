@@ -9,7 +9,7 @@ import { updateReport } from '../actions';
 import {
   renderMeal, renderDiaper,
   renderNaps, renderItemsNeeded,
-  validate } from './form';
+  validate } from './report';
 
 // Styles
 const Fieldset = styled.fieldset`
