@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
-import { renderField } from './report'
+import { renderField } from './report';
+import { login } from '../actions';
 
 // Redux Actions:
 import { emailChanged, passwordChanged } from '../actions'
@@ -63,7 +64,7 @@ const H1 = styled.h1`
    onSubmit() {
      this.props.login();
      this.props.history.push('/dashboard');
-
+   }
   render() {
 
     const { handleSubmit, pristine, submitting } = this.props;
@@ -75,8 +76,8 @@ const H1 = styled.h1`
           <input type='email' name='email' placeholder='email'/>
           <input type='password' name='password' placeholder='password'/>
           <button type="submit" className='primary-button'>Login</button>
+          <Link to='/registration'><button className="secondary-button">Register</button></Link>
         </Form>
-        <Link to='/registration' className="secondary-button">Register</Link>
       </Div>
     );
   }
