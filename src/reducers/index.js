@@ -5,8 +5,8 @@ import reportReducer from './reportReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,
-  form: formReducer,
-  report: reportReducer
+  report: reportReducer,
+  form: formReducer
 });
 
 export default rootReducer;

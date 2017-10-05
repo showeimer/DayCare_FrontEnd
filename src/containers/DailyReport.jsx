@@ -41,6 +41,10 @@ class DailyReport extends Component {
         <h1>{this.props.name}'s Daily Report'</h1>
         <Link to="/dashboard">Back</Link>
 
+        <button type="button" onClick={() => loadReport(data)}>
+          Load Account
+        </button>
+
         <Fieldset>
           <legend>Meals</legend>
           <FieldArray name="meals" component={renderMeal} />
@@ -75,10 +79,16 @@ class DailyReport extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    initialValues: state.report
+  }
+}
+
 export default reduxForm({
   validate,
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'dailyReport'
 })(
-  connect(null, { updateReport, loadReport })(DailyReport)
+  connect(mapStateToProps, { updateReport, loadReport })(DailyReport)
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 // import { validate } from './form';
-import { renderField } from '../form';
+import { renderField } from '../report';
 
 const DaycareInfo = props => {
   const { handleSubmit } = props;

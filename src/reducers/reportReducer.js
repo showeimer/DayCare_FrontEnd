@@ -8,9 +8,11 @@ const INITIAL_STATE = {
   note: ''
 }
 
-export default (state = {}, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
+
     case LOAD_REPORT:
+      console.log('Reducer:', action.payload);
       return {...state,
         diapers: action.payload.diapers,
         itemsNeeded: action.payload.itemsNeeded,
@@ -20,6 +22,7 @@ export default (state = {}, action) => {
       }
 
     default:
+      console.log('failed');
       return state;
   }
 }

@@ -10,6 +10,7 @@ export const updateReport = values => {
 }
 
 export const loadReport = data => {
+  console.log('Action:', data);
 
   return {
     type: LOAD_REPORT,
