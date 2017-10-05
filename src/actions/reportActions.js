@@ -9,14 +9,8 @@ export const updateReport = values => {
   }
 }
 
-export const loadReport = () => {
-  const data = {
-    diapers: [{time: "0800", type: "wet"}, {time: "1015", type: "dry"}],
-    itemsNeeded: {wipes: true},
-    meals: [{type: "breakfast", food: "Bacon, Eggs, Toast", amount: "most"},{type: "lunch", food: "Sandwich", amount: "all"}],
-    naps: [{napStart: "1130", napEnd: "1230"}],
-    note: 'Billy had a really great day!'
-  }
+export const loadReport = data => {
+
   return {
     type: LOAD_REPORT,
     payload: data

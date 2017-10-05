@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
-import { updateReport } from '../actions';
+import { updateReport, loadReport } from '../actions';
 
 import {
   renderMeal, renderDiaper,
@@ -15,6 +15,14 @@ import {
 const Fieldset = styled.fieldset`
   border: 1px solid black;
 `;
+
+const data = {
+  diapers: [{time: "0800", type: "wet"}, {time: "1015", type: "dry"}],
+  itemsNeeded: {wipes: true},
+  meals: [{type: "breakfast", food: "Bacon, Eggs, Toast", amount: "most"},{type: "lunch", food: "Sandwich", amount: "all"}],
+  naps: [{napStart: "1130", napEnd: "1230"}],
+  note: 'Billy had a really great day!'
+};
 
 class DailyReport extends Component {
 
@@ -72,5 +80,5 @@ export default reduxForm({
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'dailyReport'
 })(
-  connect(null, { updateReport })(DailyReport)
+  connect(null, { updateReport, loadReport })(DailyReport)
 );
