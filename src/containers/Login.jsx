@@ -22,7 +22,7 @@ const Div = styled.div`
   flex-direction: column;
 `
 const Form = styled.form`
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,6 +34,9 @@ const Form = styled.form`
     text-align: center;
     border: 0;
     border-radius: 10px;
+  }
+  a{
+    width: 100%;
   }
 `
 const H1 = styled.h1`
@@ -65,8 +68,6 @@ const H1 = styled.h1`
      this.props.passwordChanged(password)
    }
 
-
-
   render() {
     return (
       <Div className='container'>
@@ -74,7 +75,9 @@ const H1 = styled.h1`
         <Form>
           <input onChange={this.handleEmailChange.bind(this)} type='email' name='email' placeholder='email'/>
           <input onChange={this.handlePasswordChange.bind(this)} type='password' name='password' placeholder='password'/>
-          <button className='primary-button'>Login</button>
+          <Link to='/dashboard'><button className='primary-button'>Login</button></Link>
+          <Link to='/registration'><button className='secondary-button'>Register</button></Link>
+
         </Form>
       </Div>
     );

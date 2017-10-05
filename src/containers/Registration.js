@@ -3,6 +3,22 @@ import { connect } from 'react-redux';
 
 import { registerDaycare } from '../actions';
 import RegistrationForm from './registration/RegistrationForm';
+import styled from 'styled-components';
+
+// Style
+// ____________________________________________
+const Header = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background: #fff;
+  h1{
+    color: #000;
+    font-size: 50px;
+  }
+`
+
 
 class Registration extends Component {
   constructor(props) {
@@ -19,7 +35,12 @@ class Registration extends Component {
 
   render() {
     return (
-      <RegistrationForm onSubmit={this.onSubmit} />
+      <div>
+        <Header>
+          <h1>Register</h1>
+        </Header>
+        <RegistrationForm onSubmit={this.onSubmit} />
+      </div>
     );
   }
 }
