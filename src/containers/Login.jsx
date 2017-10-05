@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
-import { connect } from 'react-redux'
+import { renderField } from './report'
 
 // Redux Actions:
 import { emailChanged, passwordChanged, login } from '../actions'
@@ -60,38 +62,32 @@ const H1 = styled.h1`
 
  class Login extends Component {
 
-   handleEmailChange(email) {
-     this.props.emailChanged(email)
-   }
-
-   handlePasswordChange(password) {
-     this.props.passwordChanged(password)
-   }
-
-   handleLoginSubmit() {
+   onSubmit() {
      this.props.login();
    }
+
   render() {
+
+    const { handleSubmit, pristine, submitting } = this.props;
+
     return (
       <Div className='container'>
         <H1>inForm.</H1>
-        <Form onSubmit={this.handleLoginSubmit.bind(this)}>
-          <input onChange={this.handleEmailChange.bind(this)} type='email' name='email' placeholder='email'/>
-          <input onChange={this.handlePasswordChange.bind(this)} type='password' name='password' placeholder='password'/>
-          <Link to='/dashboard'><button className='primary-button'>Login</button></Link>
-          <Link to='/registration'><button className='secondary-button'>Register</button></Link>
-
+        <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <input type='email' name='email' placeholder='email'/>
+          <input type='password' name='password' placeholder='password'/>
+          <button type="submit" className='primary-button'>Login</button>
         </Form>
+        <Link to='/registration'><button className='secondary-button'>Register</button></Link>
       </Div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    email: state.login.email,
-    password: state.login.password
-  }
-}
-
-export default connect(mapStateToProps, {emailChanged, passwordChanged, login})(Login)
+export default reduxForm({
+  // name of this form is dailyReport, this is how redux differentiates various forms on an app
+  form: 'login',
+  // enableReinitialize: true
+})(
+  connect(null, { login })(Login)
+);

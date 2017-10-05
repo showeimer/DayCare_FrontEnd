@@ -1,4 +1,4 @@
-import {EMAIL_CHANGED, PASSWORD_CHANGED} from './types'
+import {EMAIL_CHANGED, PASSWORD_CHANGED, LOGGING_IN} from './types'
 
 export const emailChanged = email => {
   console.log('email change', email);
@@ -17,16 +17,19 @@ export const passwordChanged = password => {
 }
 
 export const login = () => {
+  console.log('logging in');
   return (dispatch) => {
-    dispatch(fetch('https://demo8413433.mockable.io/daycares/authenticate',
+    fetch('https://demo8413433.mockable.io/daycares/authenticate',
       {
-        method: 'post'
-      }
-    )
+        method: 'POST'
+      })
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        return data;
-      }));
+        return dispatch({
+          type: LOGGING_IN,
+          payload: data
+        });
+      });
   }
 }
