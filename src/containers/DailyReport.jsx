@@ -16,20 +16,17 @@ const Fieldset = styled.fieldset`
   border: 1px solid black;
 `;
 
-const data = {
-  diapers: [{time: "0800", type: "wet"}, {time: "1015", type: "dry"}],
-  itemsNeeded: {wipes: true},
-  meals: [{type: "breakfast", food: "Bacon, Eggs, Toast", amount: "most"},{type: "lunch", food: "Sandwich", amount: "all"}],
-  naps: [{napStart: "1130", napEnd: "1230"}],
-  note: 'Billy had a really great day!'
-};
+
 
 class DailyReport extends Component {
 
-  componentWillMount() {
-    console.log('component will mount');
+  componentDidMount() {
     const { loadReport, initialize, initialValues } = this.props;
-    loadReport(data);
+
+    if(!initialValues.loaded) {
+      console.log('component will mount');
+      loadReport(initialize);
+    }
   }
 
   // componentDidMount() {
@@ -43,12 +40,16 @@ class DailyReport extends Component {
   }
 
   render() {
+
+    console.log('rendered', this.props);
+
     const { handleSubmit, loadReport, pristine,
       submitting, initialValues, initialize } = this.props;
 
     return (
       // handleSubmit is a redux-form handler
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <h2>{initialValues.note}</h2>
         <h1>{this.props.name}'s Daily Report'</h1>
         <Link to="/dashboard">Back</Link>
 
@@ -109,7 +110,7 @@ export default reduxForm({
   validate,
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'dailyReport',
-  enableReinitialize: true
+  // enableReinitialize: true
 })(
   connect(mapStateToProps, mapDispatchToProps)(DailyReport)
 );
