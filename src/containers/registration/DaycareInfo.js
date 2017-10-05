@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-// import validate from './validate';
+import { validate } from './form';
 import { renderField } from '../form';
 
 const DaycareInfo = props => {
@@ -69,5 +69,5 @@ export default reduxForm({
   form: 'registration', // <------ same form name
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  // validate
+  validate
 })(DaycareInfo)
