@@ -8,11 +8,11 @@ export const fetchGroups = ()=> {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      console.log('original',data)
       return dispatch({
         type: FETCH_GROUPS,
         payload: data
       })
     })
-  }  
+  }
 }

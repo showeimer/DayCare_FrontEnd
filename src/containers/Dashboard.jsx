@@ -26,6 +26,7 @@ class Dashboard extends Component {
 
 
   render() {
+
     let group = this.props.groups.map((group) => {
       return (
         <Group key={group.name} name={group.name}/>
@@ -38,10 +39,12 @@ class Dashboard extends Component {
       </GroupsContainer>
     );
   }
+
+
 }
 
 const mapStateToProps = state => {
   console.log("what is this?", state.groups);
-  return {groups: state.groups}
+  return {groups: state.groups.groups}
 }
 export default connect(mapStateToProps, { fetchGroups })(Dashboard);
