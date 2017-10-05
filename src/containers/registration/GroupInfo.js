@@ -13,7 +13,7 @@ import { renderGroups } from './form';
 const GroupInfo = props => {
   const { handleSubmit, previousPage } = props
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='primary-form'>
 
       <FieldArray name="groups" component={renderGroups} />
 

@@ -40,7 +40,18 @@ body {
   background: #50E3C2;
 }
 
+.secondary-button{
+  height: 50px;
+  width: 100%;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  background: #FF8987;
+}
+
 .primary-form{
+  padding: 0 20%;
   background: #562C40;
   color: #fff;
   display: flex;
@@ -51,6 +62,7 @@ body {
 }
 
 .primary-form div{
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,6 +74,7 @@ body {
 
 .primary-form input{
   text-align: center;
+  width: 100%;
   outline: none;
   border: 0;
   margin: 10px 0px;
