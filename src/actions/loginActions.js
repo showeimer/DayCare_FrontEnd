@@ -15,3 +15,18 @@ export const passwordChanged = password => {
     payload: password
   }
 }
+
+export const login = () => {
+  return (dispatch) => {
+    dispatch(fetch('https://demo8413433.mockable.io/daycares/authenticate',
+      {
+        method: 'post'
+      }
+    )
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data;
+      }));
+  }
+}

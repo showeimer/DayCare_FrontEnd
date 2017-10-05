@@ -23,7 +23,7 @@ import Dashboard from './containers/Dashboard';
 import Group from './containers/Group';
 import DailyReport from './containers/DailyReport';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxThunk, createLogger())(createStore)
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore)
 
 ReactDOM.render(
 
