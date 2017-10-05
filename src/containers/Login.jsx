@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux'
 
 // Redux Actions:
-import { emailChanged, passwordChanged, login } from '../actions'
+import { emailChanged, passwordChanged } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -68,19 +68,15 @@ const H1 = styled.h1`
      this.props.passwordChanged(password)
    }
 
-   handleLoginSubmit() {
-     this.props.login();
-   }
   render() {
     return (
       <Div className='container'>
         <H1>inForm.</H1>
-        <Form onSubmit={this.handleLoginSubmit.bind(this)}>
+        <Form>
           <input onChange={this.handleEmailChange.bind(this)} type='email' name='email' placeholder='email'/>
           <input onChange={this.handlePasswordChange.bind(this)} type='password' name='password' placeholder='password'/>
           <Link to='/dashboard'><button className='primary-button'>Login</button></Link>
           <Link to='/registration'><button className='secondary-button'>Register</button></Link>
-
         </Form>
       </Div>
     );
@@ -94,4 +90,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {emailChanged, passwordChanged, login})(Login)
+export default connect(mapStateToProps, {emailChanged, passwordChanged})(Login)
