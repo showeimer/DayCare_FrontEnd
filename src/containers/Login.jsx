@@ -64,6 +64,7 @@ const H1 = styled.h1`
 
    onSubmit() {
      this.props.login();
+     this.props.history.push('/dashboard');
    }
 
   render() {
@@ -78,7 +79,7 @@ const H1 = styled.h1`
           <input type='password' name='password' placeholder='password'/>
           <button type="submit" className='primary-button'>Login</button>
         </Form>
-        <Link to='/registration'><button className='secondary-button'>Register</button></Link>
+        <Link to='/registration' className="secondary-button">Register</Link>
       </Div>
     );
   }
