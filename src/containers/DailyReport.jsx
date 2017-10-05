@@ -4,19 +4,34 @@ import { Link } from 'react-router-dom';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
-import { updateReport } from '../actions';
+import { updateReport, loadReport } from '../actions';
 
 import {
   renderMeal, renderDiaper,
   renderNaps, renderItemsNeeded,
-  validate } from './form';
+  validate } from './report';
 
 // Styles
 const Fieldset = styled.fieldset`
   border: 1px solid black;
 `;
 
+
+
 class DailyReport extends Component {
+
+  componentDidMount() {
+    const { loadReport, initialize, initialValues } = this.props;
+
+    if(!initialValues.loaded) {
+      console.log('component will mount');
+      loadReport(initialize);
+    }
+  }
+
+  // componentDidMount() {
+  //   this.props.initialize(data);
+  // }
 
   onSubmit(values) {
     this.props.updateReport(values, () => {
@@ -25,7 +40,11 @@ class DailyReport extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+
+    console.log('rendered', this.props);
+
+    const { handleSubmit, loadReport, pristine,
+      submitting, initialValues, initialize } = this.props;
 
     return (
       // handleSubmit is a redux-form handler
@@ -61,16 +80,32 @@ class DailyReport extends Component {
             type="textarea"
           />
         </Fieldset>
-        <button>Save</button>
+        <button type="submit">Save</button>
       </form>
     );
+  }
+}
+
+const mapStateToProps = state => {
+  console.log('Report state is:', state.report);
+  return {
+    initialValues: state.report
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadReport: data => {
+      dispatch(loadReport(data));
+    }
   }
 }
 
 export default reduxForm({
   validate,
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
-  form: 'dailyReport'
+  form: 'dailyReport',
+  // enableReinitialize: true
 })(
-  connect(null, { updateReport })(DailyReport)
+  connect(mapStateToProps, mapDispatchToProps)(DailyReport)
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-// import validate from './validate';
-import { renderField } from '../form';
+// import { validate } from './form';
+import { renderField } from '../report';
 
 const DaycareInfo = props => {
   const { handleSubmit } = props;
@@ -10,32 +10,32 @@ const DaycareInfo = props => {
     <form onSubmit={handleSubmit} className='primary-form'>
       <label>What is the name of your daycare?</label>
       <Field
-        name="daycareName"
+        name="account.daycare"
         type="text"
         component={renderField}
         label="Name of your daycare"
       />
       <label>Daycare Address:</label>
       <Field
-        name="address.street"
+        name="account.address.street"
         type="text"
         component={renderField}
         label="Street"
       />
       <Field
-        name="address.city"
+        name="account.address.city"
         type="text"
         component={renderField}
         label="City"
       />
       <Field
-        name="address.state"
+        name="account.address.state"
         type="text"
         component={renderField}
         label="State"
       />
       <Field
-        name="address.zip"
+        name="account.address.zip"
         type="text"
         component={renderField}
         label="Zipcode"
@@ -43,7 +43,7 @@ const DaycareInfo = props => {
 
       <label>Daycare Email:</label>
       <Field
-        name="email"
+        name="account.email"
         type="email"
         component={renderField}
         label="email@daycare.com"
@@ -51,7 +51,7 @@ const DaycareInfo = props => {
 
       <label>Password:</label>
       <Field
-        name="password"
+        name="account.password"
         type="text"
         component={renderField}
         label="password"

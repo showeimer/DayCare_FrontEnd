@@ -9,13 +9,11 @@ const Error = styled.div`
 // renders general input fields
 export const renderField = ({ input, label, type, meta: { touched, error } }) => {
   return (
-    <div>
       <div>
         <input {...input} type={type} placeholder={label} />
+        <Error>
+          {touched ? error : ''}
+        </Error>
       </div>
-      <Error>
-        {touched ? error : ''}
-      </Error>
-    </div>
   );
 };

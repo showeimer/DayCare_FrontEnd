@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { renderField } from '../../form';
+import { renderField } from '../../report';
 import { Field } from 'redux-form';
 
 const Event = styled.div`

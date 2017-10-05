@@ -9,6 +9,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 import reducers from './reducers';
 
 // Import Router
@@ -22,7 +23,7 @@ import Dashboard from './containers/Dashboard';
 import Group from './containers/Group';
 import DailyReport from './containers/DailyReport';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore)
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk, createLogger())(createStore)
 
 ReactDOM.render(
 
