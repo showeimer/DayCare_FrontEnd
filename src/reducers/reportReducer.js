@@ -1,4 +1,4 @@
-import { LOAD_REPORT } from '../actions/types';
+import { UPDATE_REPORT, LOAD_REPORT } from '../actions/types';
 
 const INITIAL_STATE = {
   diapers: [],
@@ -9,7 +9,16 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  switch(action.type) {
+  switch (action.type) {
+
+    case UPDATE_REPORT:
+      return {...state,
+        diapers: action.payload.diapers,
+        itemsNeeded: action.payload.itemsNeeded,
+        meals: action.payload.meals,
+        naps: action.payload.naps,
+        note: action.payload.note
+      }
 
     case LOAD_REPORT:
       console.log('Reducer:', action.payload);
@@ -22,7 +31,6 @@ export default (state = INITIAL_STATE, action) => {
       }
 
     default:
-      console.log('failed');
       return state;
   }
 }

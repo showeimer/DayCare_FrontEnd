@@ -11,7 +11,7 @@ const Event = styled.div`
 
 // fields and meta are props
 export const renderMeal = ({ fields, meta: { touched, error } }) => {
-  console.log(error);
+  // console.log(error);
   return (
     <ul>
       <li>

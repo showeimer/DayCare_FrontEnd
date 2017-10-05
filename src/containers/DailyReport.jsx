@@ -26,6 +26,16 @@ const data = {
 
 class DailyReport extends Component {
 
+  componentWillMount() {
+    console.log('component will mount');
+    const { loadReport, initialize, initialValues } = this.props;
+    loadReport(data);
+  }
+
+  // componentDidMount() {
+  //   this.props.initialize(data);
+  // }
+
   onSubmit(values) {
     this.props.updateReport(values, () => {
       this.props.history.push('/dashboard')
@@ -33,7 +43,8 @@ class DailyReport extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, loadReport, pristine,
+      submitting, initialValues, initialize } = this.props;
 
     return (
       // handleSubmit is a redux-form handler
@@ -41,8 +52,8 @@ class DailyReport extends Component {
         <h1>{this.props.name}'s Daily Report'</h1>
         <Link to="/dashboard">Back</Link>
 
-        <button type="button" onClick={() => loadReport(data)}>
-          Load Account
+        <button type="button" onClick={() => initialize(initialValues)}>
+          Load
         </button>
 
         <Fieldset>
@@ -73,22 +84,32 @@ class DailyReport extends Component {
             type="textarea"
           />
         </Fieldset>
-        <button>Save</button>
+        <button type="submit">Save</button>
       </form>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log('Report state is:', state.report);
   return {
     initialValues: state.report
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadReport: data => {
+      dispatch(loadReport(data));
+    }
   }
 }
 
 export default reduxForm({
   validate,
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
-  form: 'dailyReport'
+  form: 'dailyReport',
+  enableReinitialize: true
 })(
-  connect(mapStateToProps, { updateReport, loadReport })(DailyReport)
+  connect(mapStateToProps, mapDispatchToProps)(DailyReport)
 );

@@ -2,7 +2,7 @@ export function validate(values) {
   const errors = {};
 
   if(!values.meals) {
-    console.log('No meals errors');
+    // console.log('No meals errors');
   } else {
     const mealsArrayErrors = [];
     values.meals.forEach((meal, mealIndex) => {
@@ -24,7 +24,7 @@ export function validate(values) {
   }
 
   if(!values.diapers) {
-    console.log('No diapers errors');
+    // console.log('No diapers errors');
   } else {
     const diapersArrayErrors = [];
     values.diapers.forEach((diaper, diaperIndex) => {
@@ -46,7 +46,7 @@ export function validate(values) {
   }
 
   if(!values.naps) {
-    console.log('nothing');
+    // console.log('nothing');
   } else {
     const napsArrayErrors = [];
     values.naps.forEach((nap, napIndex) => {
@@ -67,6 +67,6 @@ export function validate(values) {
     }
   }
 
-  console.log('Errors:', errors);
+  // console.log('Errors:', errors);
   return errors;
 }
