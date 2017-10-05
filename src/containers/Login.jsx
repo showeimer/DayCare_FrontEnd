@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { renderField } from './report'
 
 // Redux Actions:
-import { emailChanged, passwordChanged, login } from '../actions'
+import { emailChanged, passwordChanged } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -62,9 +62,18 @@ const H1 = styled.h1`
 
  class Login extends Component {
 
+<<<<<<< HEAD
    onSubmit() {
      this.props.login();
      this.props.history.push('/dashboard');
+=======
+   handleEmailChange(email) {
+     this.props.emailChanged(email)
+   }
+
+   handlePasswordChange(password) {
+     this.props.passwordChanged(password)
+>>>>>>> af806a75586b6621eadde746a7a7cdce6efcdbb2
    }
 
   render() {
@@ -74,10 +83,18 @@ const H1 = styled.h1`
     return (
       <Div className='container'>
         <H1>inForm.</H1>
+<<<<<<< HEAD
         <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <input type='email' name='email' placeholder='email'/>
           <input type='password' name='password' placeholder='password'/>
           <button type="submit" className='primary-button'>Login</button>
+=======
+        <Form>
+          <input onChange={this.handleEmailChange.bind(this)} type='email' name='email' placeholder='email'/>
+          <input onChange={this.handlePasswordChange.bind(this)} type='password' name='password' placeholder='password'/>
+          <Link to='/dashboard'><button className='primary-button'>Login</button></Link>
+          <Link to='/registration'><button className='secondary-button'>Register</button></Link>
+>>>>>>> af806a75586b6621eadde746a7a7cdce6efcdbb2
         </Form>
         <Link to='/registration' className="secondary-button">Register</Link>
       </Div>
@@ -85,6 +102,7 @@ const H1 = styled.h1`
   }
 }
 
+<<<<<<< HEAD
 export default reduxForm({
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'login',
@@ -92,3 +110,13 @@ export default reduxForm({
 })(
   connect(null, { login })(Login)
 );
+=======
+const mapStateToProps = state => {
+  return {
+    email: state.login.email,
+    password: state.login.password
+  }
+}
+
+export default connect(mapStateToProps, {emailChanged, passwordChanged})(Login)
+>>>>>>> af806a75586b6621eadde746a7a7cdce6efcdbb2
