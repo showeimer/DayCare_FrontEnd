@@ -49,13 +49,8 @@ class DailyReport extends Component {
     return (
       // handleSubmit is a redux-form handler
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <h2>{initialValues.note}</h2>
         <h1>{this.props.name}'s Daily Report'</h1>
         <Link to="/dashboard">Back</Link>
-
-        <button type="button" onClick={() => initialize(initialValues)}>
-          Load
-        </button>
 
         <Fieldset>
           <legend>Meals</legend>
