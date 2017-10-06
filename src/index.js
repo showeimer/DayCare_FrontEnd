@@ -22,7 +22,7 @@ import Registration from './containers/Registration';
 import Dashboard from './containers/Dashboard';
 import Group from './containers/Group';
 import DailyReport from './containers/DailyReport';
-import RegistrationPage from './containers/RegistrationPage';
+import CreateGroup from './containers/CreateGroup';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk, createLogger())(createStore)
 
@@ -32,11 +32,13 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Login}/>
-          <Route path ="/registration" component={RegistrationPage} />
+          <Route path ="/register" component={Registration} />
           <DashboardLayout>
             <Route path="/dashboard/:group/:id" component={DailyReport}/>
             <Route path="/dashboard/:group" component={Group}/>
             <Route path="/dashboard" component={Dashboard}/>
+
+            <Route path="/manage/groups" component={CreateGroup} />
           </DashboardLayout>
         </Switch>
     </BrowserRouter>

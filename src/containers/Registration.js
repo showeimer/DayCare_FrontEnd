@@ -1,48 +1,85 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Field, FieldArray, reduxForm } from 'redux-form';
+import { renderField } from './report'
 import { registerDaycare } from '../actions';
-import RegistrationForm from './registration/RegistrationForm';
-import styled from 'styled-components';
 
-// Style
-// ____________________________________________
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  background: #fff;
-  h1{
-    color: #000;
-    font-size: 50px;
-  }
-`
+class RegistrationPage extends Component {
 
-
-class Registration extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit(values) {
-    this.props.registerDaycare(values, () => {
-      this.props.history.push('/')
-    });
+  onSubmit() {
+    this.props.registerDaycare();
+    this.props.history.push('/');
   }
 
   render() {
+
+    const { handleSubmit, pristine, submitting } = this.props;
+
     return (
       <div>
-        <Header>
-          <h1>Register</h1>
-        </Header>
-        <RegistrationForm onSubmit={this.onSubmit} />
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className='primary-form'>
+          <label>What is the name of your daycare?</label>
+          <Field
+            name="name"
+            type="text"
+            component={renderField}
+            label="Name of your daycare"
+          />
+          <label>Daycare Address:</label>
+          <Field
+            name="street"
+            type="text"
+            component={renderField}
+            label="Street"
+          />
+          <Field
+            name="city"
+            type="text"
+            component={renderField}
+            label="City"
+          />
+          <Field
+            name="state"
+            type="text"
+            component={renderField}
+            label="State"
+          />
+          <Field
+            name="zip"
+            type="text"
+            component={renderField}
+            label="Zipcode"
+          />
+
+          <label>Daycare Email:</label>
+          <Field
+            name="email"
+            type="email"
+            component={renderField}
+            label="email@daycare.com"
+          />
+
+          <label>Password:</label>
+          <Field
+            name="password"
+            type="text"
+            component={renderField}
+            label="password"
+          />
+          <div>
+            <button type="submit" className="next primary-button">
+              Register
+            </button>
+          </div>
+        </form>
       </div>
-    );
+    )
   }
 }
-
-export default connect(null, { registerDaycare })(Registration);
+export default reduxForm({
+  // name of this form is dailyReport, this is how redux differentiates various forms on an app
+  form: 'registration',
+  // enableReinitialize: true
+})(
+  connect(null, { registerDaycare })(RegistrationPage)
+);
