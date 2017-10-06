@@ -26,7 +26,6 @@ const GroupsContainer = styled.div`
 class Dashboard extends Component {
 
   componentWillMount(){
-    console.log('mounted!');
     this.props.fetchGroups()
   }
 
@@ -50,7 +49,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("what is this?", state.groups);
-  return {groups: state.groups.groups}
+  return {groups: state.groupList.groups}
 }
 export default connect(mapStateToProps, { fetchGroups })(Dashboard);

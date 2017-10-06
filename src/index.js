@@ -37,7 +37,6 @@ ReactDOM.render(
             <Route path="/dashboard/:group/:id" component={DailyReport}/>
             <Route path="/dashboard/:group" component={Group}/>
             <Route path="/dashboard" component={Dashboard}/>
-
             <Route path="/manage/groups" component={CreateGroup} />
           </DashboardLayout>
         </Switch>

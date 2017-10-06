@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   login: loginReducer,
   report: reportReducer,
   form: formReducer,
-  groups: groupReducer
+  groupList: groupReducer
 });
 
 export default rootReducer;
