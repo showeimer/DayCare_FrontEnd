@@ -3,9 +3,22 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 // Components
+import Child from './Child'
 
 // Redux Actions
 import { fetchRoster } from '../actions'
+
+const Div = styled.div`
+  background: pink;
+  width: 80%;
+  margin: auto;
+`
+const H1 = styled.h1`
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  margin: 20px 0;
+`
 
 class Roster extends Component {
   componentWillMount(){
@@ -13,15 +26,16 @@ class Roster extends Component {
   }
 
   render(){
-    let child = this.props.roster.map((child) => {
+    let children = this.props.roster.map((child, index) => {
       return (
-        <li key={child.firstname}>{child.firstname} {child.lastname}</li>
+        <Child key={index} child={child} />
       )
     })
     return (
-      <ul>
-        {child}
-      </ul>
+      <Div>
+        <H1>Roster</H1>
+        {children}
+      </Div>
     )
   }
 
