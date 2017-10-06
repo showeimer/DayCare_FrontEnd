@@ -8,6 +8,38 @@ import styled from 'styled-components'
 import { fetchGroups } from '../actions'
 
 
+const Li = styled.li`
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  font-size: 20px;
+  h1{
+    font-size: 20px;
+    padding-right: 50px;
+  }
+  button{
+    margin: 0px 10px;
+  }
+`
+const Ul = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 200px;
+  width: 300px;
+`
+const Div = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const H1 = styled.h1`
+  color: #fff;
+  font-size: 50px;
+  padding: 30px 0px;
+`
+
 class ManageGroups extends Component {
 
   componentWillMount(){
@@ -19,20 +51,20 @@ class ManageGroups extends Component {
 
     let group = this.props.groups.map((group) => {
       return (
-        <li>
+        <Li>
           <h1>{group.name}</h1>
           <button>Edit</button>
           <button>Delete</button>
-        </li>
+        </Li>
       )
     })
     return (
-      <div>
-        <h1>Manage Groups</h1>
-        <ul>
+      <Div>
+        <H1>Manage Groups</H1>
+        <Ul>
           {group}
-        </ul>
-      </div>
+        </Ul>
+      </Div>
     );
   }
 
