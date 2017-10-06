@@ -76,7 +76,7 @@ const H1 = styled.h1`
           <input type='email' name='email' placeholder='email'/>
           <input type='password' name='password' placeholder='password'/>
           <button type="submit" className='primary-button'>Login</button>
-          <Link to='/registration'><button className="secondary-button">Register</button></Link>
+          <Link to='/register'><button className="secondary-button">Register</button></Link>
         </Form>
       </Div>
     );
