@@ -10,23 +10,32 @@ import { fetchGroups } from '../actions'
 
 const Li = styled.li`
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   h1{
     font-size: 20px;
     padding-right: 50px;
   }
-  button{
-    margin: 0px 10px;
+  span{
+    background: #fff;
+    padding: 5px;
+    color: #000;
+    cursor: pointer;
+    margin: 0 10px;
   }
 `
 const Ul = styled.ul`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
   height: 200px;
   width: 300px;
+  margin-top: 20px;
 `
 const Div = styled.div`
   width: 100%;
@@ -36,8 +45,8 @@ const Div = styled.div`
 `
 const H1 = styled.h1`
   color: #fff;
-  font-size: 50px;
-  padding: 30px 0px;
+  font-size: 22px;
+  margin: 30px 0;
 `
 
 class ManageGroups extends Component {
@@ -53,8 +62,10 @@ class ManageGroups extends Component {
       return (
         <Li>
           <h1>{group.name}</h1>
-          <button>Edit</button>
-          <button>Delete</button>
+          <div>
+            <span>Edit</span>
+            <span>Delete</span>
+          </div>
         </Li>
       )
     })
