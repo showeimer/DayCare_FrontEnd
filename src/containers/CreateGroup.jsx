@@ -12,7 +12,7 @@ class CreateGroup extends Component {
       <form onSubmit={handleSubmit} className='primary-form'>
 
         <FieldArray name="groups" component={renderGroups} />
-        <button type="submit">Create Group</button>
+        <button type="submit">Submit</button>
 
       </form>
     )
