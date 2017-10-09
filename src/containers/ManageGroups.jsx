@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 // Components
+import CreateGroup from './CreateGroup';
 
 // Redux Actions:
 import { fetchGroups } from '../actions'
@@ -55,7 +56,6 @@ class ManageGroups extends Component {
     this.props.fetchGroups()
   }
 
-
   render() {
 
     let group = this.props.groups.map((group) => {
@@ -69,12 +69,20 @@ class ManageGroups extends Component {
         </Li>
       )
     })
+
     return (
       <Div>
         <H1>Manage Groups</H1>
+
+        <details>
+          <summary>Add Group</summary>
+          <CreateGroup />
+        </details>
+
         <Ul>
           {group}
         </Ul>
+
       </Div>
     );
   }
