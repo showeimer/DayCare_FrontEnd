@@ -22,7 +22,6 @@ import Registration from './containers/Registration';
 import Dashboard from './containers/Dashboard';
 import Group from './containers/Group';
 import DailyReport from './containers/DailyReport';
-import CreateGroup from './containers/CreateGroup';
 import CreateChild from './containers/CreateChild';
 import ManageGroups from './containers/ManageGroups';
 import Roster from './containers/Roster';
@@ -42,7 +41,6 @@ ReactDOM.render(
             <Route path="/dashboard/:group" component={Group} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/roster" component={Roster} />
-            <Route path="/manage/groups/create" component={CreateGroup} />
             <Route path="/manage/groups" component={ManageGroups} />
             <Route path="/manage/children/create" component={CreateChild} />
           </DashboardLayout>
