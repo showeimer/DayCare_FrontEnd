@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { FieldArray, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 // import validate from './validate';
-import { renderGroups } from './registration/form';
+import { renderField } from './report';
 
 class CreateGroup extends Component {
 
@@ -11,7 +11,19 @@ class CreateGroup extends Component {
     return (
       <form onSubmit={handleSubmit} className='primary-form'>
 
-        <FieldArray name="groups" component={renderGroups} />
+        <Field
+          name={`name`}
+          type="text"
+          component={renderField}
+          label="Group Name"
+        />
+        <Field
+          name={`teacher`}
+          type="text"
+          component={renderField}
+          label="Teacher's Name"
+        />
+
         <button type="submit">Submit</button>
 
       </form>

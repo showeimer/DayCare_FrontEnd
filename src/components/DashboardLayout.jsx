@@ -63,10 +63,9 @@ export default class DashboardLayout extends Component {
           </button>
           <nav>
           	<ul>
-              <li className='reset'><Link to='/dashboard'>My Account</Link></li>
+              <li className='reset'><Link to='/dashboard'>Dashboard</Link></li>
           		<li className='reset'><Link to='/roster'>Roster</Link></li>
           		<li className='reset'><Link to='/manage/groups'>Manage Groups</Link></li>
-          		<li className='reset'><Link to='/registration'>Register</Link></li>
           	</ul>
           </nav>
           <Header>
