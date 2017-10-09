@@ -31,10 +31,11 @@ We used the following technologies for this app:
   - Trello
   - Mockable.io
   - Git/GitHub
+  - Sketch
 
 ## Planning
 
-Deciding on app, app features, note card user flow, deciding on components, etc etc.
+Deciding on app, app features, note card user flow, deciding on components, etc.
 
 ## Development
 
