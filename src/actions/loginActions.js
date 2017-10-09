@@ -1,8 +1,8 @@
 import { Base64 } from "js-base64";
-import { LOGGING_IN } from './types';
+import { history } from 'history';
+import { LOGIN_SUCCESS, LOGIN_FAIL } from './types';
 
 export const login = values => {
-  console.log('logging in', values);
   let headers = new Headers();
   headers.append('Authorization', 'Basic ' + Base64.encode(values.email + ":" + values.password));
 
@@ -12,13 +12,23 @@ export const login = values => {
         method: 'POST',
         headers: headers
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        return dispatch({
-          type: LOGGING_IN,
-          payload: data
-        });
-      });
+      .then(response => {
+        console.log('response', response);
+        if(response.status === 200) {
+          response.json()
+            .then(data => {
+              console.log(data);
+              return dispatch({
+                type: LOGIN_SUCCESS,
+                payload: data
+              });
+            });
+        } else {
+          return dispatch({
+            type: LOGIN_FAIL,
+            payload: null
+          })
+        }
+      })
   }
 }
