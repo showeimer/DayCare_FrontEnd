@@ -1,20 +1,20 @@
-import { EMAIL_CHANGED, PASSWORD_CHANGED } from '../actions/types'
+import { LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/types'
 
 
 const INITIAL_STATE = {
-  email: '',
-  password: ''
+  loginSuccess: false,
+  error: false,
+  account: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type){
 
-    case EMAIL_CHANGED:
-      console.log('email updated');
-      return {...state, email: action.payload}
+    case LOGIN_SUCCESS:
+      return {...state, loginSuccess: true, error: false, account: action.payload};
 
-    case PASSWORD_CHANGED:
-      return {...state, password: action.payload}
+    case LOGIN_FAIL:
+      return {...state, loginSucess: false, error: true};
 
     default:
       return state;

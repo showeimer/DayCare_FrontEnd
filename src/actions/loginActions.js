@@ -1,35 +1,34 @@
-import {EMAIL_CHANGED, PASSWORD_CHANGED, LOGGING_IN} from './types'
+import { Base64 } from "js-base64";
+import { history } from 'history';
+import { LOGIN_SUCCESS, LOGIN_FAIL } from './types';
 
-export const emailChanged = email => {
-  console.log('email change', email);
-  return {
-    type: EMAIL_CHANGED,
-    payload: email
-  }
-}
+export const login = values => {
+  let headers = new Headers();
+  headers.append('Authorization', 'Basic ' + Base64.encode(values.email + ":" + values.password));
 
-export const passwordChanged = password => {
-  console.log('password change', password);
-  return {
-    type: PASSWORD_CHANGED,
-    payload: password
-  }
-}
-
-export const login = () => {
-  console.log('logging in');
   return (dispatch) => {
-    fetch('https://demo8413433.mockable.io/daycares/authenticate',
+    fetch('https://fast-lake-96101.herokuapp.com/daycares/authenticate',
       {
-        method: 'POST'
+        method: 'POST',
+        headers: headers
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        return dispatch({
-          type: LOGGING_IN,
-          payload: data
-        });
-      });
+      .then(response => {
+        console.log('response', response);
+        if(response.status === 200) {
+          response.json()
+            .then(data => {
+              console.log(data);
+              return dispatch({
+                type: LOGIN_SUCCESS,
+                payload: data
+              });
+            });
+        } else {
+          return dispatch({
+            type: LOGIN_FAIL,
+            payload: null
+          })
+        }
+      })
   }
 }

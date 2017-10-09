@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { renderField } from './report';
-import { login } from '../actions';
 
 // Redux Actions:
-import { emailChanged, passwordChanged } from '../actions'
+import { login } from '../actions';
 
 // Imported Styles:
 import '../styles/global.css'
@@ -59,22 +58,42 @@ const H1 = styled.h1`
 // ________________________________________________
 
  class Login extends Component {
-
-
-   onSubmit() {
-     this.props.login();
-     this.props.history.push('/dashboard');
+   
+   componentDidUpdate() {
+     if(this.props.loggedIn) {
+       this.props.history.push('/dashboard');
+     }
    }
+
+   onSubmit(values) {
+     this.props.login(values);
+   }
+
   render() {
+
+    const error = () => {
+      if(this.props.error) return <h2>Login Failed</h2>
+    }
 
     const { handleSubmit, pristine, submitting } = this.props;
 
     return (
       <Div className='container'>
         <H1>inForm.</H1>
+        {error()}
         <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <input type='email' name='email' placeholder='email'/>
-          <input type='password' name='password' placeholder='password'/>
+          <Field
+            name="email"
+            type="email"
+            component={renderField}
+            label="email"
+          />
+          <Field
+            name="password"
+            type="password"
+            component={renderField}
+            label="password"
+          />
           <button type="submit" className='primary-button'>Login</button>
           <Link to='/register'><button className="secondary-button">Register</button></Link>
         </Form>
@@ -83,11 +102,19 @@ const H1 = styled.h1`
   }
 }
 
+const mapStateToProps = state => {
+  console.log(state.login.loginSuccess);
+  return {
+    error: state.login.error,
+    loggedIn: state.login.loginSuccess,
+    login: state.login
+  }
+}
 
 export default reduxForm({
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'login',
   // enableReinitialize: true
 })(
-  connect(null, { login })(Login)
+  connect(mapStateToProps, { login })(Login)
 );
