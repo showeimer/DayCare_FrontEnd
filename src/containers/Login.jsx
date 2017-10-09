@@ -62,7 +62,6 @@ const H1 = styled.h1`
 
    onSubmit(values) {
      this.props.login(values);
-     this.props.history.push('/dashboard');
    }
 
   render() {
