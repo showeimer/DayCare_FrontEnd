@@ -60,11 +60,11 @@ const H1 = styled.h1`
 
  class Login extends Component {
 
-
-   onSubmit() {
-     this.props.login();
+   onSubmit(values) {
+     this.props.login(values);
      this.props.history.push('/dashboard');
    }
+
   render() {
 
     const { handleSubmit, pristine, submitting } = this.props;
@@ -73,8 +73,18 @@ const H1 = styled.h1`
       <Div className='container'>
         <H1>inForm.</H1>
         <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <input type='email' name='email' placeholder='email'/>
-          <input type='password' name='password' placeholder='password'/>
+          <Field
+            name="email"
+            type="email"
+            component={renderField}
+            label="email"
+          />
+          <Field
+            name="password"
+            type="password"
+            component={renderField}
+            label="password"
+          />
           <button type="submit" className='primary-button'>Login</button>
           <Link to='/register'><button className="secondary-button">Register</button></Link>
         </Form>
