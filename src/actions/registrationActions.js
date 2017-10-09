@@ -1,9 +1,15 @@
 import { REGISTER_DAYCARE } from './types';
 
-export const registerDaycare = () => {
+export const registerDaycare = values => {
   return (dispatch) => {
-      fetch('https://demo8413433.mockable.io/daycares/register', {
-        method: 'POST'
+      const registration = JSON.stringify(values);
+      fetch('https://fast-lake-96101.herokuapp.com/daycares/register', {
+        method: 'POST',
+        body: registration,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
       })
       .then(response => response.json())
       .then(data => {

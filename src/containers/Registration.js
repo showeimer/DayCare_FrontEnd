@@ -6,8 +6,8 @@ import { registerDaycare } from '../actions';
 
 class RegistrationPage extends Component {
 
-  onSubmit() {
-    this.props.registerDaycare();
+  onSubmit(values) {
+    this.props.registerDaycare(values);
     this.props.history.push('/');
   }
 
@@ -27,7 +27,7 @@ class RegistrationPage extends Component {
           />
           <label>Daycare Address:</label>
           <Field
-            name="street"
+            name="address"
             type="text"
             component={renderField}
             label="Street"
@@ -45,7 +45,7 @@ class RegistrationPage extends Component {
             label="State"
           />
           <Field
-            name="zip"
+            name="zipcode"
             type="text"
             component={renderField}
             label="Zipcode"
@@ -76,6 +76,7 @@ class RegistrationPage extends Component {
     )
   }
 }
+
 export default reduxForm({
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'registration',
