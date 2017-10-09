@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 // import validate from './validate';
+import styled from 'styled-components'
 import { renderField } from './report';
+
+const Form = styled.form`
+  height: 100%;
+  background: #fff;
+  input{
+    font-size: 16px;
+
+  }
+  button{
+    font-size: 16px;
+    height: 35px;
+    width: 90px;
+    margin-top: 10px;
+  }
+`
 
 class CreateGroup extends Component {
 
@@ -9,7 +25,8 @@ class CreateGroup extends Component {
     const { handleSubmit } = this.props
 
     return (
-      <form onSubmit={handleSubmit} className='primary-form'>
+
+      <Form onSubmit={handleSubmit, this.props.popup} className='primary-form' >
 
         <Field
           name={`name`}
@@ -24,9 +41,9 @@ class CreateGroup extends Component {
           label="Teacher's Name"
         />
 
-        <button type="submit">Submit</button>
+      <button type="submit" className="primary-button">Submit</button>
 
-      </form>
+      </Form>
     )
   }
 }
