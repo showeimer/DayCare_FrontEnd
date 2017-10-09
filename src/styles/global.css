@@ -89,6 +89,7 @@ body {
   outline: none;
   border: 0;
   margin: 10px 0px;
+  border-radius: 10px;
 }
 
 /*_______   Pop out nav   _______________*/
