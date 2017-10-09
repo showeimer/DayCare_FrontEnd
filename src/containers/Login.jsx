@@ -58,7 +58,7 @@ const H1 = styled.h1`
 // ________________________________________________
 
  class Login extends Component {
-
+   
    componentDidUpdate() {
      if(this.props.loggedIn) {
        this.props.history.push('/dashboard');
