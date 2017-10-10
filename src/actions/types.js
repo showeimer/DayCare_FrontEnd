@@ -6,3 +6,4 @@ export const LOAD_REPORT = 'load_report';
 export const FETCH_GROUPS = 'fetch_groups';
 export const CREATE_GROUP = 'create_group';
 export const FETCH_ROSTER = 'fetch_rsoter';
+export const CREATE_CHILD = 'create_child';

@@ -23,7 +23,11 @@ export const createGroup = values => {
     fetch('https://fast-lake-96101.herokuapp.com/daycares/groups', {
       method: 'POST',
       body: groupInfo,
-      credentials: 'include'
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     })
     .then(response => response.json())
     .then(data => {

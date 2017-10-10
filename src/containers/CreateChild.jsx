@@ -4,6 +4,7 @@ import { FieldArray, Field, reduxForm } from 'redux-form';
 // import validate from './validate';
 import { renderField } from './report';
 import { fetchGroups } from '../actions'
+import { createChild } from '../actions/rosterActions';
 
 class CreateChild extends Component {
 
@@ -21,11 +22,16 @@ class CreateChild extends Component {
     }
   }
 
+  onSubmit(values) {
+    console.log(values);
+    this.props.createChild(values);
+  }
+
   render() {
     const { handleSubmit } = this.props
 
     return (
-      <form onSubmit={handleSubmit} className='primary-form'>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className='primary-form'>
 
         <Field
           name='firstName'
@@ -85,5 +91,5 @@ export default reduxForm({
   form: 'createChild', //Form name is same
   // validate
 })(
-  connect(mapStateToProps, { fetchGroups })(CreateChild)
+  connect(mapStateToProps, { fetchGroups, createChild })(CreateChild)
 )
