@@ -29,18 +29,22 @@ class Dashboard extends Component {
     this.props.fetchGroups();
   }
 
+  renderGroups() {
+    let group = [];
+    if(this.props.groups.length) {
+      group = this.props.groups.map((group) => {
+        return <Group key={group.name} name={group.name}/>
+      })
+    return group;
+    }
+  }
 
   render() {
 
-    let group = this.props.groups.map((group) => {
-      return (
-        <Group key={group.name} name={group.name}/>
-      )
-    })
     return (
       <GroupsContainer>
         <H1>Groups</H1>
-        {group}
+        {this.renderGroups()}
       </GroupsContainer>
     );
   }
@@ -49,6 +53,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.groups);
   return {
     login: state.login.loginSuccess,
     groups: state.groupList.groups
