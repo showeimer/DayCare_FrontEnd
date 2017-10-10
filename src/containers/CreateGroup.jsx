@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 // import validate from './validate';
 import styled from 'styled-components'
 import { renderField } from './report';
+import { createGroup } from '../actions/groupActions';
 
 const Form = styled.form`
   height: 100%;
@@ -21,12 +23,17 @@ const Form = styled.form`
 
 class CreateGroup extends Component {
 
+  onSubmit(values) {
+    console.log(values);
+    // this.props.createGroup(values);
+  }
+
   render() {
     const { handleSubmit } = this.props
 
     return (
 
-      <Form onSubmit={handleSubmit, this.props.popup} className='primary-form' >
+      <Form onSubmit={handleSubmit(this.onSubmit.bind(this)), this.props.popup} className='primary-form' >
 
         <Field
           name={`name`}
@@ -51,4 +58,6 @@ class CreateGroup extends Component {
 export default reduxForm({
   form: 'createGroup', //Form name is same
   // validate
-})(CreateGroup)
+})(
+  connect(null, { createGroup })(CreateGroup)
+)

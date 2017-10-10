@@ -158,9 +158,9 @@ class ManageGroups extends Component {
 
   render() {
 
-    let group = this.props.groups.map((group) => {
+    let group = this.props.groups.map((group, index) => {
       return (
-          <Li>
+          <Li key={index}>
             <h1>{group.name}</h1>
             <div>
               <Edit></Edit>
