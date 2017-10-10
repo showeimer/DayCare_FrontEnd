@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FieldArray, Field, reduxForm } from 'redux-form';
 // import validate from './validate';
-import { renderChildren } from './registration/form';
+import { renderField } from './report';
 import { fetchGroups } from '../actions'
 
 class CreateChild extends Component {
@@ -27,11 +27,46 @@ class CreateChild extends Component {
     return (
       <form onSubmit={handleSubmit} className='primary-form'>
 
-        <FieldArray name="groups" component={renderChildren} />
+        <Field
+          name='firstName'
+          type="text"
+          component={renderField}
+          label="First Name"
+        />
+        <Field
+          name='lastName'
+          type="text"
+          component={renderField}
+          label="Last Name"
+        />
+        <Field
+          name='dob'
+          type="text"
+          component={renderField}
+          label="Birthdate (mm/dd/yyyy)"
+        />
+        <Field
+          name='parentFirstName'
+          type="text"
+          component={renderField}
+          label="Parent's First Name"
+        />
+        <Field
+          name='parentLastName'
+          type="text"
+          component={renderField}
+          label="Parent's Last Name"
+        />
+        <Field
+          name='parentEmail'
+          type="email"
+          component={renderField}
+          label="Parent's Email"
+        />
 
         <Field name='owner' component='select'>
           <option />
-          {this.renderGroupAssignment}
+          {this.renderGroupAssignment()}
         </Field>
 
         <button type="submit">Submit</button>
@@ -50,5 +85,5 @@ export default reduxForm({
   form: 'createChild', //Form name is same
   // validate
 })(
-  connect(null, { fetchGroups })(CreateChild)
+  connect(mapStateToProps, { fetchGroups })(CreateChild)
 )

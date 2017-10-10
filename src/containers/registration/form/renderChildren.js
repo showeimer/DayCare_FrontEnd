@@ -59,7 +59,6 @@ export const renderChildren = ({ fields, meta: { touched, error } }) => {
               component={renderField}
               label="Parent's Email"
             />
-            {/* name='owner' */}
           </Event>
         )
       })}
