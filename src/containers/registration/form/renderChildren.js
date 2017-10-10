@@ -24,41 +24,42 @@ export const renderChildren = ({ fields, meta: { touched, error } }) => {
             <button type="button" title="Remove Child" onClick={() => fields.remove(index)}>X</button>
 
             <Field
-              name={`${child}.name.firstName`}
+              name='firstName'
               type="text"
               component={renderField}
               label="First Name"
             />
             <Field
-              name={`${child}.name.lastName`}
+              name='lastName'
               type="text"
               component={renderField}
               label="Last Name"
             />
             <Field
-              name={`${child}.birthdate`}
+              name='dob'
               type="text"
               component={renderField}
-              label="Birthdate (xx/xx/xxxx)"
+              label="Birthdate (mm/dd/yyyy)"
             />
             <Field
-              name={`${child}.parent.firstName`}
+              name='parentFirstName'
               type="text"
               component={renderField}
               label="Parent's First Name"
             />
             <Field
-              name={`${child}.parent.lastName`}
+              name='parentLastName'
               type="text"
               component={renderField}
               label="Parent's Last Name"
             />
             <Field
-              name={`${child}.parent.email`}
+              name='parentEmail'
               type="email"
               component={renderField}
               label="Parent's Email"
             />
+            {/* name='owner' */}
           </Event>
         )
       })}
