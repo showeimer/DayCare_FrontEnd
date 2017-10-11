@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, CREATE_GROUP, GROUP_POPUP } from './types'
+import { FETCH_GROUPS, FETCH_CHILDREN, CREATE_GROUP, GROUP_POPUP } from './types'
 
 
 export const fetchGroups = () => {
@@ -16,6 +16,24 @@ export const fetchGroups = () => {
     })
   }
 }
+
+export const fetchChildren = (groupID) => {
+  return (dispatch) => {
+    fetch(`https://fast-lake-96101.herokuapp.com/daycares/groups/${groupID}/childen`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('list of children ', data);
+      return dispatch({
+        type: FETCH_CHILDREN,
+        payload: data
+      })
+    })
+  }
+}
+
 
 export const createGroup = values => {
   return (dispatch) => {

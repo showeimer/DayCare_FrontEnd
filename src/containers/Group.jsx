@@ -6,14 +6,18 @@ const H1 = styled.h1`
   color: #000;
   text-decoration: none;
 `
-
+const Div = styled.div`
+  margin: 20px;
+`
 class Group extends Component {
 
   render() {
     return (
-      <Link className="group-container" to={`/dashboard/${this.props.name}`}>
-      <h1>{this.props.name}</h1>
-      </Link>
+      <Div>
+        <Link className="group-container" to={`/daycares/groups/${this.props.id}/childen`}>
+          <h1>{this.props.name}</h1>
+        </Link>
+      </Div>
     );
   }
 }

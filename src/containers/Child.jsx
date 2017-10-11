@@ -9,7 +9,7 @@ import dele from '../styles/images/dele.png'
 
 
 
-const Div = styled.div`
+const Roster = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -19,10 +19,25 @@ const Div = styled.div`
   background: #fff;
   margin-bottom: 20px;
   h1{
+    text-align: center;
     color: #000;
   }
   img{
 
+  }
+`
+const GroupList = styled.div`
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20px;
+  h1{
+    padding-right: 50px;
+    width: 100%;
+    text-align: center;
+    color: #000;
   }
 `
 const Modify = styled.div`
@@ -48,17 +63,31 @@ const Delete = styled.span`
 
 class Child extends Component {
 
+
+
+
   render(){
-    return(
-      <Div>
-        <img src="http://fillmurray.com/50/50"></img>
-        <h1>{this.props.child.firstname} {this.props.child.lastname}</h1>
-        <Modify>
-          <Edit></Edit>
-          <Delete></Delete>
-        </Modify>
-      </Div>
-    )
+
+    if (!this.props.groupChild) {
+      return (
+        <Roster>
+          <img src="http://fillmurray.com/50/50" />
+          <h1>{this.props.child.firstName} {this.props.child.lastName}</h1>
+          <Modify>
+            <Edit></Edit>
+            <Delete></Delete>
+          </Modify>
+        </Roster>
+      )
+    }
+    else {
+      return (
+        <GroupList>
+          <img src="http://fillmurray.com/50/50" />
+          <h1>{this.props.child.firstName} {this.props.child.lastName}</h1>
+        </GroupList>
+      )
+    }
   }
 }
 

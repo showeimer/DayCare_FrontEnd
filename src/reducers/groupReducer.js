@@ -1,9 +1,10 @@
-import { FETCH_GROUPS, GROUP_POPUP } from '../actions/types'
+import { FETCH_GROUPS, GROUP_POPUP, FETCH_CHILDREN } from '../actions/types'
 
 
 const INITIAL_STATE = {
 
   groups: [],
+  children: [],
   popup: false,
   styling: {
     display: 'none',
@@ -18,6 +19,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case FETCH_GROUPS:
       return {...state, groups: action.payload}
+
+    case FETCH_CHILDREN:
+      return {...state, children: action.payload}
 
     case GROUP_POPUP:
       if (!state.popup) {
