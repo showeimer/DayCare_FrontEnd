@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import CreateGroup from './CreateGroup';
 
 // Redux Actions:
-import { fetchGroups } from '../actions'
+import { fetchGroups, groupPopup } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -103,7 +103,6 @@ const CreateGroupPop = styled.div`
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  border: solid 3px #50E3C2;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -112,7 +111,6 @@ const CreateGroupPop = styled.div`
   padding-bottom: 20px;
   z-index: 5;
   border-radius: 20px;
-
 `
 const Header = styled.div`
 width: 100%;
@@ -170,19 +168,19 @@ class ManageGroups extends Component {
 
     return (
       <Div>
-        <Overlay style={{'display': `${this.state.display}`}}>
+        <Overlay style={{'display': `${this.props.styling.display}`}}>
         </Overlay>
-        <CreateGroupPop style={{'display': `${this.state.flex}`}}>
+        <CreateGroupPop style={{'display': `${this.props.styling.flex}`}}>
           <Header>
             <h1>Create a group</h1>
-            <span onClick={this.handlePopUp.bind(this)}></span>
+            <span onClick={this.props.groupPopup}></span>
           </Header>
-          <CreateGroup popup = {this.handlePopUp}/>
+          <CreateGroup popup = {this.props.groupPopup}/>
         </CreateGroupPop>
-        <Ul style={{'filter': `${this.state.filter}`}}>
+        <Ul style={{'filter': `${this.props.styling.filter}`}}>
           <H1>Manage Groups</H1>
           <Add>
-            <div onClick={this.handlePopUp.bind(this)}></div>
+            <div onClick={this.props.groupPopup}></div>
           </Add>
           {group}
         </Ul>
@@ -194,6 +192,9 @@ class ManageGroups extends Component {
 }
 
 const mapStateToProps = state => {
-  return {groups: state.groupList.groups}
+  return {
+    groups: state.groupList.groups,
+    styling: state.groupList.styling
+  }
 }
-export default connect(mapStateToProps, { fetchGroups })(ManageGroups);
+export default connect(mapStateToProps, { fetchGroups, groupPopup })(ManageGroups);

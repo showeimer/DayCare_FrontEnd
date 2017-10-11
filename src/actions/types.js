@@ -7,3 +7,4 @@ export const FETCH_GROUPS = 'fetch_groups';
 export const CREATE_GROUP = 'create_group';
 export const FETCH_ROSTER = 'fetch_rsoter';
 export const CREATE_CHILD = 'create_child';
+export const GROUP_POPUP = 'group_popup';
