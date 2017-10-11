@@ -7,9 +7,6 @@ const H1 = styled.h1`
   text-decoration: none;
 `
 
-
-
-
 class Group extends Component {
 
   render() {

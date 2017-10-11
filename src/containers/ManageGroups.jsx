@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
-
 
 // Components
 import CreateGroup from './CreateGroup';

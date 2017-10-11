@@ -1,5 +1,4 @@
 import { Base64 } from "js-base64";
-import { history } from 'history';
 import { LOGIN_SUCCESS, LOGIN_FAIL } from './types';
 
 export const login = values => {

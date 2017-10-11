@@ -16,8 +16,6 @@ const Fieldset = styled.fieldset`
   border: 1px solid black;
 `;
 
-
-
 class DailyReport extends Component {
 
   componentDidMount() {
@@ -28,10 +26,6 @@ class DailyReport extends Component {
       loadReport(initialize);
     }
   }
-
-  // componentDidMount() {
-  //   this.props.initialize(data);
-  // }
 
   onSubmit(values) {
     this.props.updateReport(values, () => {
@@ -92,19 +86,11 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadReport: data => {
-      dispatch(loadReport(data));
-    }
-  }
-}
-
 export default reduxForm({
   validate,
   // name of this form is dailyReport, this is how redux differentiates various forms on an app
   form: 'dailyReport',
   // enableReinitialize: true
 })(
-  connect(mapStateToProps, mapDispatchToProps)(DailyReport)
+  connect(mapStateToProps, { loadReport, updateReport })(DailyReport)
 );
