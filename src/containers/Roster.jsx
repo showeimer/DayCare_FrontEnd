@@ -60,7 +60,7 @@ class Roster extends Component {
       <Div>
         <H1>Roster</H1>
         <Add>
-          <Link to="/add_child"><div></div></Link>
+          <Link to="/manage/children/create"><div></div></Link>
         </Add>
         {children}
       </Div>
