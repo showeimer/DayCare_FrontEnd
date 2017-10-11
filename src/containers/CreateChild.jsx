@@ -71,7 +71,7 @@ class CreateChild extends Component {
           label="Parent's Email"
         />
 
-        <Field name='owner' component='select'>
+        <Field name='owner.id' component='select'>
           <option />
           {this.renderGroupAssignment()}
         </Field>
