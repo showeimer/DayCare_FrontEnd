@@ -58,7 +58,7 @@ const H1 = styled.h1`
 // ________________________________________________
 
  class Login extends Component {
-   
+
    componentDidUpdate() {
      if(this.props.loggedIn) {
        this.props.history.push('/dashboard');
@@ -75,7 +75,7 @@ const H1 = styled.h1`
       if(this.props.error) return <h2>Login Failed</h2>
     }
 
-    const { handleSubmit, pristine, submitting } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <Div className='container'>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { renderField } from './report'
 import { registerDaycare } from '../actions';
 import styled from 'styled-components'
@@ -38,7 +38,7 @@ class RegistrationPage extends Component {
 
   render() {
 
-    const { handleSubmit, pristine, submitting } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div className='container'>

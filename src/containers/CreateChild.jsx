@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FieldArray, Field, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 // import validate from './validate';
 import { renderField } from './report';
 import { fetchGroups } from '../actions'

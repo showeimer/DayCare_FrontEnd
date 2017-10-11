@@ -43,8 +43,7 @@ class DailyReport extends Component {
 
     console.log('rendered', this.props);
 
-    const { handleSubmit, loadReport, pristine,
-      submitting, initialValues, initialize } = this.props;
+    const { handleSubmit, loadReport } = this.props;
 
     return (
       // handleSubmit is a redux-form handler
