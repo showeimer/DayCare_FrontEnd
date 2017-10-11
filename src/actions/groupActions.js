@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, CREATE_GROUP } from './types'
+import { FETCH_GROUPS, CREATE_GROUP, GROUP_POPUP } from './types'
 
 
 export const fetchGroups = () => {
@@ -37,4 +37,16 @@ export const createGroup = values => {
       })
     })
   }
+}
+
+export const groupPopup = () => {
+  // this.state.flex === 'none' ? this.setState({flex: 'flex'}) : this.setState({flex: 'none'})
+  // this.state.display === 'none' ? this.setState({display: 'block'}) : this.setState({display: 'none'})
+  // this.state.filter === 'none' ? this.setState({filter: 'blur(3px)'}) : this.setState({filter: 'none'})
+  console.log('action!');
+
+  return ({
+    type: GROUP_POPUP,
+    payload: null
+  })
 }

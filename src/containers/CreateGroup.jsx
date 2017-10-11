@@ -23,29 +23,46 @@ const Form = styled.form`
 
 class CreateGroup extends Component {
 
+  componentWillMount(){
+      console.log(this.props);
+  }
+
   onSubmit(values) {
     console.log(values);
+    this.props.popup()
     // this.props.createGroup(values);
   }
 
+
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, daycareId } = this.props
+
+    const renderOwner = ({ input, label, type, meta: { touched, error } }) => {
+      console.log('daycareId:', daycareId)
+      return <input {...input} type={type} placeholder={label} value={daycareId} style={{display: 'none'}} onChange={() => null} />
+    };
 
     return (
 
-      <Form onSubmit={handleSubmit(this.onSubmit.bind(this)), this.props.popup} className='primary-form' >
+      <Form onSubmit={handleSubmit(this.onSubmit.bind(this))} className='primary-form' >
 
         <Field
-          name={`name`}
+          name='name'
           type="text"
           component={renderField}
           label="Group Name"
         />
         <Field
-          name={`teacher`}
+          name='teachers'
           type="text"
           component={renderField}
           label="Teacher's Name"
+        />
+
+      <Field
+        name='owner.id'
+        type='number'
+        component={renderOwner}
         />
 
       <button type="submit" className="primary-button">Submit</button>
@@ -55,9 +72,16 @@ class CreateGroup extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  console.log('sfasdf', state.login.account.id)
+  return {
+    daycareId: state.login.account.id
+  }
+}
+
 export default reduxForm({
   form: 'createGroup', //Form name is same
   // validate
 })(
-  connect(null, { createGroup })(CreateGroup)
+  connect(mapStateToProps, { createGroup })(CreateGroup)
 )
