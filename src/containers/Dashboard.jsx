@@ -43,7 +43,7 @@ class Dashboard extends Component {
 
     return (
       <GroupsContainer>
-        <H1>Groups</H1>
+        <H1>{this.props.login.account.name}</H1>
         {this.renderGroups()}
       </GroupsContainer>
     );
@@ -55,7 +55,7 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   console.log(state.groups);
   return {
-    login: state.login.loginSuccess,
+    login: state.login,
     groups: state.groupList.groups
   }
 }

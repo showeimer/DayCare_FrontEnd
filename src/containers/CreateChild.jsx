@@ -25,6 +25,7 @@ class CreateChild extends Component {
   onSubmit(values) {
     console.log(values);
     this.props.createChild(values);
+    this.props.history.push('/roster');
   }
 
   render() {
