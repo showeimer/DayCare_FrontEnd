@@ -24,6 +24,7 @@ const Form = styled.form`
     font-size: 14px;
     border: none;
   }
+  we need a way to get ALLLL the kids for the roster page
 `
 
 class CreateChild extends Component {

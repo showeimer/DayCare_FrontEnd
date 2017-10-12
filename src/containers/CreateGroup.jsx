@@ -38,7 +38,6 @@ class CreateGroup extends Component {
     console.log(values);
     this.props.createGroup(values, this.props.daycareId)
     this.props.popup()
-    window.location.reload()
 
 
     // this.props.createGroup(values);
