@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Child from './Child'
 
 // Redux Actions
-import { fetchRoster } from '../actions'
+import { fetchRoster, deleteChild } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -78,4 +78,4 @@ class Roster extends Component {
 const mapStateToProps = state => {
   return {roster: state.rosterList.roster}
 }
-export default connect(mapStateToProps, { fetchRoster })(Roster)
+export default connect(mapStateToProps, { fetchRoster, deleteChild })(Roster)

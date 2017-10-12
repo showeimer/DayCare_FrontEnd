@@ -1,4 +1,4 @@
-import { FETCH_ROSTER, CREATE_CHILD } from './types'
+import { FETCH_ROSTER, CREATE_CHILD, DELETE_CHILD } from './types'
 
 export const fetchRoster = ()=> {
   return (dispatch) => {
@@ -33,6 +33,26 @@ export const createChild = values => {
     .then(data => {
       return dispatch({
         type: CREATE_CHILD,
+        payload: null
+      })
+    })
+  }
+}
+
+export const deleteChild = id => {
+  return (dispatch) => {
+    fetch(`https://fast-lake-96101.herokuapp.com/daycares/child/delete/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      return dispatch({
+        type: DELETE_CHILD,
         payload: null
       })
     })
