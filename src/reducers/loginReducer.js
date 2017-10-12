@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/types'
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../actions/types'
 
 
 const INITIAL_STATE = {
@@ -15,6 +15,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case LOGIN_FAIL:
       return {...state, loginSucess: false, error: true};
+
+    case LOGOUT:
+      return INITIAL_STATE
 
     default:
       return state;

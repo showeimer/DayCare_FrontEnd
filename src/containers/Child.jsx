@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // Imported Styles:
@@ -82,10 +83,12 @@ class Child extends Component {
     }
     else {
       return (
-        <GroupList>
-          <img src="http://fillmurray.com/50/50" />
-          <h1>{this.props.child.firstName} {this.props.child.lastName}</h1>
-        </GroupList>
+        <Link to={`/manage/reports/${this.props.child.id}`}>
+          <GroupList>
+              <img src="http://fillmurray.com/50/50" />
+              <h1>{this.props.child.firstName} {this.props.child.lastName}</h1>
+          </GroupList>
+        </Link>
       )
     }
   }

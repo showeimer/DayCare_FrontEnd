@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { logout } from '../actions';
 
 // Imported Styles:
 import '../index.css';
@@ -36,7 +38,7 @@ const H1 = styled.h1`
 
 // ________________________________________________
 
-export default class DashboardLayout extends Component {
+class DashboardLayout extends Component {
 
   componentDidMount(){
     var isActive = false;
@@ -55,6 +57,11 @@ export default class DashboardLayout extends Component {
     })
   }
 
+  appLogout() {
+    console.log('logging out');
+    logout();
+  }
+
   render() {
     return (
       <div className='container'>
@@ -66,6 +73,7 @@ export default class DashboardLayout extends Component {
               <li className='reset'><Link to='/dashboard'>Dashboard</Link></li>
           		<li className='reset'><Link to='/roster'>Roster</Link></li>
           		<li className='reset'><Link to='/manage/groups'>Manage Groups</Link></li>
+              <li className='reset'><a href='/' onClick={this.appLogout} style={{cursor: 'pointer'}}>Logout</a></li>
           	</ul>
           </nav>
           <Header>
@@ -77,3 +85,5 @@ export default class DashboardLayout extends Component {
     );
   }
 }
+
+export default connect(null, { logout })(DashboardLayout)

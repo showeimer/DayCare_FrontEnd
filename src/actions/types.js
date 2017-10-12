@@ -1,5 +1,6 @@
 export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_FAIL = 'login_fail';
+export const LOGOUT = 'logout';
 export const UPDATE_REPORT = 'update_report';
 export const REGISTER_DAYCARE = 'register_daycare';
 export const LOAD_REPORT = 'load_report';
