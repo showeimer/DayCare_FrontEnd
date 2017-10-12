@@ -55,6 +55,10 @@ export default class DashboardLayout extends Component {
     })
   }
 
+  logout() {
+    
+  }
+
   render() {
     return (
       <div className='container'>
@@ -66,6 +70,7 @@ export default class DashboardLayout extends Component {
               <li className='reset'><Link to='/dashboard'>Dashboard</Link></li>
           		<li className='reset'><Link to='/roster'>Roster</Link></li>
           		<li className='reset'><Link to='/manage/groups'>Manage Groups</Link></li>
+              <li className='reset'><button>Logout</button></li>
           	</ul>
           </nav>
           <Header>

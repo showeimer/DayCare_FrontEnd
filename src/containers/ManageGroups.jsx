@@ -187,8 +187,6 @@ class ManageGroups extends Component {
       </Div>
     );
   }
-
-
 }
 
 const mapStateToProps = state => {

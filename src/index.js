@@ -38,13 +38,13 @@ ReactDOM.render(
           <Route exact path="/" component={Login}/>
           <Route path ="/register" component={Registration} />
           <DashboardLayout>
-            <Route path="/dashboard/:group/:id" component={DailyReport} />
             <Route path="/daycares/groups/:id/children" component={GroupChildren} />
             <Route path="/dashboard/:group" component={Group} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/roster" component={Roster} />
             <Route path="/manage/groups" component={ManageGroups} />
             <Route path="/manage/children/create" component={CreateChild} />
+            <Route path="/manage/reports/:id" component={DailyReport} />
           </DashboardLayout>
         </Switch>
     </BrowserRouter>
