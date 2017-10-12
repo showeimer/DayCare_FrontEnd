@@ -1,4 +1,11 @@
-import { FETCH_GROUPS, FETCH_CHILDREN, RESET_CHILDREN, CREATE_GROUP, GROUP_POPUP } from './types'
+import {
+  FETCH_GROUPS,
+  FETCH_CHILDREN,
+  RESET_CHILDREN,
+  CREATE_GROUP,
+  GROUP_POPUP,
+  DELETE_GROUP,
+  UPDATE_GROUP } from './types'
 
 
 export const fetchGroups = () => {
@@ -58,6 +65,26 @@ export const createGroup = (values, id) => {
     .then(data => {
       return dispatch({
         type: CREATE_GROUP,
+        payload: null
+      })
+    })
+  }
+}
+
+export const deleteGroup = id => {
+  return (dispatch) => {
+    fetch(`https://fast-lake-96101.herokuapp.com/daycares/groups/delete/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      return dispatch({
+        type: DELETE_GROUP,
         payload: null
       })
     })

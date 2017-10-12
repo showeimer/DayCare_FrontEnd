@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import CreateGroup from './CreateGroup';
 
 // Redux Actions:
-import { fetchGroups, groupPopup } from '../actions'
+import { fetchGroups, groupPopup, deleteGroup } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -143,7 +143,7 @@ class ManageGroups extends Component {
   componentWillMount(){
     this.props.fetchGroups();
   }
-
+  
   render() {
 
     let group = this.props.groups.map((group, index) => {
@@ -187,4 +187,4 @@ const mapStateToProps = state => {
     styling: state.groupList.styling
   }
 }
-export default connect(mapStateToProps, { fetchGroups, groupPopup })(ManageGroups);
+export default connect(mapStateToProps, { fetchGroups, groupPopup, deleteGroup })(ManageGroups);
