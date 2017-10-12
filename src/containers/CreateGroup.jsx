@@ -6,19 +6,26 @@ import styled from 'styled-components'
 import { renderField } from './report';
 import { createGroup } from '../actions/groupActions';
 
+// Import Router
+import { Link } from 'react-router-dom';
+
+
 const Form = styled.form`
   height: 100%;
   background: #fff;
   input{
     font-size: 16px;
-
+    border: 1px solid #50E3C2;
   }
   button{
     font-size: 16px;
     height: 35px;
     width: 90px;
     margin-top: 10px;
+    cursor: pointer;
   }
+
+
 `
 
 class CreateGroup extends Component {
@@ -31,6 +38,8 @@ class CreateGroup extends Component {
     console.log(values);
     this.props.createGroup(values, this.props.daycareId)
     this.props.popup()
+
+
     // this.props.createGroup(values);
   }
 

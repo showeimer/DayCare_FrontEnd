@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, GROUP_POPUP, FETCH_CHILDREN, RESET_CHILDREN, LOGOUT } from '../actions/types'
+import { FETCH_GROUPS, GROUP_POPUP, FETCH_CHILDREN, RESET_CHILDREN, CREATE_GROUP, LOGOUT } from '../actions/types'
 
 
 const INITIAL_STATE = {
@@ -25,6 +25,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case RESET_CHILDREN:
       return {...state, children: []}
+
+    case CREATE_GROUP:
+      return window.location.reload()
 
     case GROUP_POPUP:
       if (!state.popup) {

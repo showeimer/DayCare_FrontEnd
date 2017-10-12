@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+// Import Router
+import { Link } from 'react-router-dom';
+
 // Components
 import CreateGroup from './CreateGroup';
 
@@ -111,6 +114,7 @@ const CreateGroupPop = styled.div`
   padding-bottom: 20px;
   z-index: 5;
   border-radius: 20px;
+
 `
 const Header = styled.div`
 width: 100%;
@@ -136,20 +140,8 @@ h1{
 
 class ManageGroups extends Component {
 
-  state = {
-    display: 'none',
-    flex: 'none',
-    filter: 'none'
-  }
-
   componentWillMount(){
     this.props.fetchGroups();
-  }
-
-  handlePopUp(){
-    this.state.flex === 'none' ? this.setState({flex: 'flex'}) : this.setState({flex: 'none'})
-    this.state.display === 'none' ? this.setState({display: 'block'}) : this.setState({display: 'none'})
-    this.state.filter === 'none' ? this.setState({filter: 'blur(3px)'}) : this.setState({filter: 'none'})
   }
 
   render() {
