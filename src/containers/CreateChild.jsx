@@ -16,7 +16,7 @@ class CreateChild extends Component {
     let group = [];
     if(this.props.groups.length) {
       group = this.props.groups.map((group) => {
-        return <option value={group.id}>{group.name}</option>
+        return <option value={group.id} key={group.id}>{group.name}</option>
       })
     return group;
     }

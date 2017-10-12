@@ -14,7 +14,7 @@ class Group extends Component {
   render() {
     return (
       <Div>
-        <Link className="group-container" to={`/daycares/groups/${this.props.id}/childen`}>
+        <Link className="group-container" to={`/daycares/groups/${this.props.id}/children`}>
           <h1>{this.props.name}</h1>
         </Link>
       </Div>

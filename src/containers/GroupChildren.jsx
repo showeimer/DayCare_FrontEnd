@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Child from './Child'
 
 // Redux Actions
-import { fetchChildren } from '../actions'
+import { fetchChildren, resetChildren } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -51,6 +51,10 @@ class GroupChildren extends Component {
     this.props.fetchChildren(id)
   }
 
+  componentWillUnmount() {
+    this.props.resetChildren()
+  }
+
   renderChildren() {
     let children = [];
     if(this.props.children.length) {
@@ -64,9 +68,11 @@ class GroupChildren extends Component {
 
   render(){
     console.log(this.props.children[0]);
+    let group = this.props.children.length > 0 ? this.props.children[0].owner.name : null
+
     return (
       <Div>
-        <H1>Group Name</H1>
+        <H1>{group}</H1>
         {this.renderChildren()}
       </Div>
     )
@@ -77,6 +83,7 @@ class GroupChildren extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.groupList.children)
   return {children: state.groupList.children}
 }
-export default connect(mapStateToProps, { fetchChildren })(GroupChildren)
+export default connect(mapStateToProps, { fetchChildren, resetChildren })(GroupChildren)
