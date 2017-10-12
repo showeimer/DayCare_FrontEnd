@@ -6,6 +6,10 @@ import styled from 'styled-components'
 import { renderField } from './report';
 import { createGroup } from '../actions/groupActions';
 
+// Import Router
+import { Link } from 'react-router-dom';
+
+
 const Form = styled.form`
   height: 100%;
   background: #fff;
@@ -18,7 +22,9 @@ const Form = styled.form`
     height: 35px;
     width: 90px;
     margin-top: 10px;
+    cursor: pointer;
   }
+
 
 `
 
@@ -32,6 +38,9 @@ class CreateGroup extends Component {
     console.log(values);
     this.props.createGroup(values, this.props.daycareId)
     this.props.popup()
+    window.location.reload()
+
+
     // this.props.createGroup(values);
   }
 
