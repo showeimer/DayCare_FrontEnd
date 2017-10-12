@@ -50,19 +50,25 @@ class Roster extends Component {
     this.props.fetchRoster()
   }
 
+  renderRoster() {
+    let roster = [];
+    if(this.props.roster.length) {
+      roster = this.props.roster.map((child, index) => {
+        return <Child key={index} child={child} />
+      })
+    return roster;
+    }
+  }
+
   render(){
-    let children = this.props.roster.map((child, index) => {
-      return (
-        <Child key={index} child={child} />
-      )
-    })
+
     return (
       <Div>
         <H1>Roster</H1>
         <Add>
           <Link to="/manage/children/create"><div></div></Link>
         </Add>
-        {children}
+        {this.renderRoster()}
       </Div>
     )
   }
