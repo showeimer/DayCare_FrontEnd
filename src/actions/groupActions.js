@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, FETCH_CHILDREN, CREATE_GROUP, GROUP_POPUP } from './types'
+import { FETCH_GROUPS, FETCH_CHILDREN, RESET_CHILDREN, CREATE_GROUP, GROUP_POPUP } from './types'
 
 
 export const fetchGroups = () => {
@@ -34,6 +34,12 @@ export const fetchChildren = (groupID) => {
   }
 }
 
+export const resetChildren = () => {
+  return {
+    type: RESET_CHILDREN,
+    payload: null
+  }
+}
 
 export const createGroup = (values, id) => {
   console.log(values, id);

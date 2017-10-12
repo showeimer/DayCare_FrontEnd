@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Child from './Child'
 
 // Redux Actions
-import { fetchChildren } from '../actions'
+import { fetchChildren, resetChildren } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -51,6 +51,10 @@ class GroupChildren extends Component {
     this.props.fetchChildren(id)
   }
 
+  componentWillUnmount() {
+    this.props.resetChildren()
+  }
+
   renderChildren() {
     let children = [];
     if(this.props.children.length) {
@@ -82,4 +86,4 @@ const mapStateToProps = state => {
   console.log(state.groupList.children)
   return {children: state.groupList.children}
 }
-export default connect(mapStateToProps, { fetchChildren })(GroupChildren)
+export default connect(mapStateToProps, { fetchChildren, resetChildren })(GroupChildren)

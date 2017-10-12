@@ -9,3 +9,4 @@ export const FETCH_ROSTER = 'fetch_roster';
 export const FETCH_CHILDREN = 'fetch_children';
 export const CREATE_CHILD = 'create_child';
 export const GROUP_POPUP = 'group_popup';
+export const RESET_CHILDREN = 'reset_children';
