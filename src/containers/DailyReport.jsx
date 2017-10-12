@@ -12,9 +12,40 @@ import {
   validate } from './report';
 
 // Styles
-const Fieldset = styled.fieldset`
-  border: 1px solid black;
-`;
+const Form = styled.form`
+  width: 100%;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    margin: 20px 0;
+  }
+  a{
+    color: #fff;
+    background: #FF8987;
+    padding: 10px 15px;
+    border-radius: 10px;
+    width: 10%;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+  }
+`
+
+const Fieldset = styled.div`
+  margin: 20px 0;
+  width: 90%;
+  legend{
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+`
 
 class DailyReport extends Component {
 
@@ -41,12 +72,11 @@ class DailyReport extends Component {
 
     return (
       // handleSubmit is a redux-form handler
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h1>{this.props.name}'s Daily Report'</h1>
         <Link to="/dashboard">Back</Link>
 
         <Fieldset>
-          <legend>Meals</legend>
           <FieldArray name="meals" component={renderMeal} />
         </Fieldset>
 
@@ -74,7 +104,7 @@ class DailyReport extends Component {
           />
         </Fieldset>
         <button type="submit">Save</button>
-      </form>
+      </Form>
     );
   }
 }
