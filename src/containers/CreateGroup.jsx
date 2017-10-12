@@ -29,18 +29,19 @@ class CreateGroup extends Component {
 
   onSubmit(values) {
     console.log(values);
+    this.props.createGroup(values, this.props.daycareId)
     this.props.popup()
     // this.props.createGroup(values);
   }
 
 
   render() {
-    const { handleSubmit, daycareId } = this.props
+    const { handleSubmit, daycareId, defaultValue } = this.props
 
-    const renderOwner = ({ input, label, type, meta: { touched, error } }) => {
-      console.log('daycareId:', daycareId)
-      return <input {...input} type={type} placeholder={label} value={daycareId} style={{display: 'none'}} onChange={() => null} />
-    };
+    // const renderOwner = ({ input, label, type, value, meta: { touched, error } }) => {
+    //   console.log('daycareId:', daycareId)
+    //   return <select {...input} value={daycareId}><option value={daycareId} /></select>
+    // };
 
     return (
 
@@ -59,12 +60,6 @@ class CreateGroup extends Component {
           label="Teacher's Name"
         />
 
-      <Field
-        name='owner.id'
-        type='number'
-        component={renderOwner}
-        />
-
       <button type="submit" className="primary-button">Submit</button>
 
       </Form>
@@ -75,7 +70,7 @@ class CreateGroup extends Component {
 const mapStateToProps = state => {
   console.log('sfasdf', state.login.account.id)
   return {
-    daycareId: state.login.account.id
+    daycareId: state.login.account.id,
   }
 }
 

@@ -143,7 +143,7 @@ class ManageGroups extends Component {
   }
 
   componentWillMount(){
-    this.props.fetchGroups()
+    this.props.fetchGroups();
   }
 
   handlePopUp(){

@@ -35,9 +35,10 @@ export const fetchChildren = (groupID) => {
 }
 
 
-export const createGroup = values => {
+export const createGroup = (values, id) => {
+  console.log(values, id);
   return (dispatch) => {
-    const groupInfo = JSON.stringify(values);
+    const groupInfo = JSON.stringify({...values, owner: {id: id}});
     fetch('https://fast-lake-96101.herokuapp.com/daycares/groups', {
       method: 'POST',
       body: groupInfo,

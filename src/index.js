@@ -39,7 +39,7 @@ ReactDOM.render(
           <Route path ="/register" component={Registration} />
           <DashboardLayout>
             <Route path="/dashboard/:group/:id" component={DailyReport} />
-            <Route path="/daycares/groups/:id/childen" component={GroupChildren} />
+            <Route path="/daycares/groups/:id/children" component={GroupChildren} />
             <Route path="/dashboard/:group" component={Group} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/roster" component={Roster} />

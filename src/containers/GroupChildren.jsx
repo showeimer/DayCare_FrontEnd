@@ -64,9 +64,11 @@ class GroupChildren extends Component {
 
   render(){
     console.log(this.props.children[0]);
+    let group = this.props.children.length > 0 ? this.props.children[0].owner.name : null
+
     return (
       <Div>
-        <H1>Group Name</H1>
+        <H1>{group}</H1>
         {this.renderChildren()}
       </Div>
     )
@@ -77,6 +79,7 @@ class GroupChildren extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.groupList.children)
   return {children: state.groupList.children}
 }
 export default connect(mapStateToProps, { fetchChildren })(GroupChildren)
