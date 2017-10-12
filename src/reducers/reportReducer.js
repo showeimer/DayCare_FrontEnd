@@ -1,4 +1,4 @@
-import { UPDATE_REPORT, LOAD_REPORT } from '../actions/types';
+import { UPDATE_REPORT, LOAD_REPORT, LOGOUT } from '../actions/types';
 
 const INITIAL_STATE = {
   diapers: [],
@@ -31,6 +31,9 @@ export default (state = INITIAL_STATE, action) => {
         note: action.payload.note,
         loaded: true
       }
+
+    case LOGOUT:
+      return INITIAL_STATE
 
     default:
       return state;

@@ -1,5 +1,5 @@
 import { Base64 } from "js-base64";
-import { LOGIN_SUCCESS, LOGIN_FAIL } from './types';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './types';
 
 export const login = values => {
   let headers = new Headers();
@@ -29,5 +29,12 @@ export const login = values => {
           })
         }
       })
+  }
+}
+
+export const logout = () => {
+  return {
+    type: LOGOUT,
+    payload: null
   }
 }

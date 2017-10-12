@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, GROUP_POPUP, FETCH_CHILDREN, RESET_CHILDREN } from '../actions/types'
+import { FETCH_GROUPS, GROUP_POPUP, FETCH_CHILDREN, RESET_CHILDREN, LOGOUT } from '../actions/types'
 
 
 const INITIAL_STATE = {
@@ -51,6 +51,9 @@ export default (state = INITIAL_STATE, action) => {
           }
         }
       }
+
+    case LOGOUT:
+      return INITIAL_STATE
 
     default:
       return state;
