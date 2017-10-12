@@ -33,8 +33,14 @@ export const login = values => {
 }
 
 export const logout = () => {
-  return {
-    type: LOGOUT,
-    payload: null
+
+  return (dispatch) => {
+    fetch('https://fast-lake-96101.herokuapp.com/daycares/logout')
+      .then(response => response.json())
+      .then(data => { return dispatch({
+        type: LOGOUT,
+        payload: null
+        })
+      })
   }
 }
