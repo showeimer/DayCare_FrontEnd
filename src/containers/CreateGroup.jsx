@@ -11,7 +11,7 @@ const Form = styled.form`
   background: #fff;
   input{
     font-size: 16px;
-
+    border: 1px solid #50E3C2;
   }
   button{
     font-size: 16px;
@@ -19,6 +19,7 @@ const Form = styled.form`
     width: 90px;
     margin-top: 10px;
   }
+
 `
 
 class CreateGroup extends Component {

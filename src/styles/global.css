@@ -97,8 +97,8 @@ body {
   border-radius: 10px;
 }
 .primary-form input:focus{
-  margin: 7px 0px;
-  border: 3px solid #50E3C2;
+  margin: 9px 0px;
+  border: 2px solid #50E3C2;
 }
 
 /*_______   Pop out nav   _______________*/

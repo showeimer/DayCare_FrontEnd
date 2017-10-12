@@ -111,6 +111,7 @@ const CreateGroupPop = styled.div`
   padding-bottom: 20px;
   z-index: 5;
   border-radius: 20px;
+
 `
 const Header = styled.div`
 width: 100%;
