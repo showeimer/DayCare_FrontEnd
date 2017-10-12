@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import styled from 'styled-components';
 import { logout } from '../actions';
 
@@ -40,6 +41,12 @@ const H1 = styled.h1`
 
 class DashboardLayout extends Component {
 
+  redirect() {
+    if(!this.props.login) {
+      return <Redirect to='/' />
+    }
+  }
+
   componentDidMount(){
     var isActive = false;
 
@@ -79,11 +86,17 @@ class DashboardLayout extends Component {
           <Header>
             <H1>inForm.</H1>
           </Header>
-
+      {this.redirect()}
       {this.props.children}
       </div>
     );
   }
 }
 
-export default connect(null, { logout })(DashboardLayout)
+const mapStateToProps = state => {
+  return {
+    login: state.login.loginSuccess
+  }
+}
+
+export default connect(mapStateToProps, { logout })(DashboardLayout)
