@@ -22,6 +22,11 @@ body {
   font-family: 'News Cycle', sans-serif;
 }
 
+html{
+  background: #562C40;
+
+}
+
 .container{
   position: absolute;
   z-index: -20;

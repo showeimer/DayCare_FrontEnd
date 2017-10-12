@@ -5,6 +5,26 @@ import { Field, reduxForm } from 'redux-form';
 import { renderField } from './report';
 import { fetchGroups } from '../actions'
 import { createChild } from '../actions/rosterActions';
+import styled from 'styled-components'
+
+const H1 = styled.h1`
+  color: #fff;
+  font-size: 30px;
+  margin: 40px 0;
+`
+const Form = styled.form`
+  button{
+    margin: 20px;
+    cursor: pointer;
+  }
+  h2{
+    margin: 15px 0;
+  }
+  select{
+    font-size: 14px;
+    border: none;
+  }
+`
 
 class CreateChild extends Component {
 
@@ -32,8 +52,8 @@ class CreateChild extends Component {
     const { handleSubmit } = this.props
 
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className='primary-form'>
-
+      <Form onSubmit={handleSubmit(this.onSubmit.bind(this))} className='primary-form'>
+        <H1>Add new child</H1>
         <Field
           name='firstName'
           type="text"
@@ -71,13 +91,14 @@ class CreateChild extends Component {
           label="Parent's Email"
         />
 
+        <h2>Group:</h2>
         <Field name='owner.id' component='select'>
           <option />
           {this.renderGroupAssignment()}
         </Field>
 
-        <button type="submit">Submit</button>
-      </form>
+        <button type="submit" className='primary-button'>Submit</button>
+      </Form>
     )
   }
 }
