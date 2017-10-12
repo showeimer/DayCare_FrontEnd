@@ -3,17 +3,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Error = styled.span`
-  color: red;
+  color: #FF8987;
+  font-size: 18px;
+  position: absolute;
+  top: -30px;
+
+`
+const Div = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
 `
 
 // renders general input fields
 export const renderField = ({ input, label, type, meta: { touched, error } }) => {
   return (
-      <div>
+      <Div>
+
+          {touched ? <Error>{error}</Error> : ''}
+
         <input {...input} type={type} placeholder={label} />
-        <Error>
-          {touched ? error : ''}
-        </Error>
-      </div>
+      </Div>
   );
 };

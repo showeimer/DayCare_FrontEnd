@@ -4,22 +4,40 @@ import styled from 'styled-components';
 import { renderField } from './';
 import { Field } from 'redux-form';
 
+// Images
+import add from '../../styles/images/add.png'
+import delete_icon from '../../styles/images/delete_icon.png'
+
 const Event = styled.div`
   display: flex;
-  flex-direction: row;
-`;
+  flex-direction: column;
+  span{
+    background: url(${delete_icon}) no-repeat;
+    width: 46px;
+    height: 46px;
+  }
+`
+const Ul = styled.ul`
+  li span{
+    display: block;
+    background: url(${add}) no-repeat;
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+  }
+`
 
 export const renderDiaper = ({fields, meta: { error } }) => {
   return (
-    <ul>
+    <Ul>
       <li>
-        <button type="button" onClick={() => fields.push({})}>Add Diaper Change</button>
+        <span type="button" onClick={() => fields.push({})}></span>
       </li>
 
       {fields.map((diaper, index) => {
         return (
           <Event key={index}>
-            <button type="button" title="Remove Diaper Change" onClick={() => fields.remove(index)}>X</button>
+            <span type="button" title="Remove Diaper Change" onClick={() => fields.remove(index)}></span>
 
             <Field
               name={`${diaper}.time`}
@@ -57,6 +75,6 @@ export const renderDiaper = ({fields, meta: { error } }) => {
           </Event>
         )
       })}
-    </ul>
+    </Ul>
   )
 }

@@ -54,6 +54,11 @@ const H1 = styled.h1`
     margin: auto;
   }
 `
+const H2 = styled.h2`
+  color: #FF8987;
+  font-size: 20px;
+  padding: 10px;
+`
 
 // ________________________________________________
 
@@ -72,7 +77,7 @@ const H1 = styled.h1`
   render() {
 
     const error = () => {
-      if(this.props.error) return <h2>Login Failed</h2>
+      if(this.props.error) return <H2>Invalid email and/or password</H2>
     }
 
     const { handleSubmit } = this.props;
