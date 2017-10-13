@@ -26,7 +26,7 @@ import CreateChild from './containers/CreateChild';
 import ManageGroups from './containers/ManageGroups';
 import Roster from './containers/Roster';
 import GroupChildren from './containers/GroupChildren';
-
+import EditChild from './containers/EditChild';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk, createLogger())(createStore)
 
@@ -45,6 +45,7 @@ ReactDOM.render(
             <Route path="/roster" component={Roster} />
             <Route path="/manage/groups" component={ManageGroups} />
             <Route path="/manage/children/create" component={CreateChild} />
+            <Route path ="/manage/children/edit/:id" component={EditChild} />
             <Route path="/manage/reports/:id" component={DailyReport} />
           </DashboardLayout>
         </Switch>

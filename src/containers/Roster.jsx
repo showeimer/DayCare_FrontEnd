@@ -46,7 +46,7 @@ const Add = styled.div`
   }
 `
 
-const Edit = styled.span`
+const Edit = styled(Link)`
   height: 30px;
   width: 30px;
   background: url(${pencil}) no-repeat;
@@ -97,7 +97,7 @@ class Roster extends Component {
     let roster = [];
     if(this.props.roster.length) {
       roster = this.props.roster.map((child, index) => {
-        return <Child key={index} child={child}><Edit/>
+        return <Child key={index} child={child}><Edit to={`/manage/children/edit/${child.id}`} />
         <Delete onClick={this.handlePopup} id={child.id} /></Child>
       })
     return roster;
