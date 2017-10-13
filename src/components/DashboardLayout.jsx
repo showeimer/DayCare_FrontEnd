@@ -43,7 +43,8 @@ class DashboardLayout extends Component {
 
   redirect() {
     if(!this.props.login) {
-      return <Redirect to='/' />
+      console.log('yes');
+      // return <Redirect to='/' />
     }
   }
 

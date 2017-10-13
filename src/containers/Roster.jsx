@@ -21,11 +21,10 @@ import dele from '../styles/images/dele.png'
 import pencil from '../styles/images/pencil.png'
 
 const Div = styled.div`
-  margin: auto;
-  width: 82%;
   display: flex;
-  align-items: center;
-  background: pink;
+  justify-content: center;
+  height; 100%;
+  position: relative;
 `
 const H1 = styled.h1`
   font-size: 30px;
@@ -67,10 +66,12 @@ const Delete = styled.span`
 `
 
 const Ul = styled.ul`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: auto;
+  margin-top: 20px;
   filter: blur(3px);
-  background: blue;
+  padding: 0 40px;
 `
 
 

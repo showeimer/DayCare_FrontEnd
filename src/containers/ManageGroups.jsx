@@ -64,7 +64,8 @@ const Delete = styled.span`
 const Ul = styled.ul`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
+  padding: 0 40px;
   margin-top: 20px;
   filter: blur(3px);
 `
