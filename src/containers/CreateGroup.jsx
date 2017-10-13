@@ -33,8 +33,8 @@ class CreateGroup extends Component {
   }
 
   onSubmit(values) {
-    console.log(values);
-    this.props.createGroup(values, this.props.daycareId)
+    console.log('function is', this.props.refresh);
+    this.props.createGroup(values, this.props.daycareId);
     this.props.popup()
   }
 

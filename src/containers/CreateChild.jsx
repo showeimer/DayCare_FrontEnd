@@ -24,7 +24,6 @@ const Form = styled.form`
     font-size: 14px;
     border: none;
   }
-  we need a way to get ALLLL the kids for the roster page
 `
 
 class CreateChild extends Component {
@@ -45,7 +44,7 @@ class CreateChild extends Component {
 
   onSubmit(values) {
     console.log(values);
-    this.props.createChild(values, this.props.history.push('/roster'));
+    this.props.createChild(values, () => this.props.history.push('/roster'));
   }
 
   render() {

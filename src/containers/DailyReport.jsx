@@ -44,7 +44,6 @@ const Fieldset = styled.div`
     font-size: 22px;
     margin-bottom: 30px;
   }
-
 `
 
 class DailyReport extends Component {
@@ -73,7 +72,7 @@ class DailyReport extends Component {
     return (
       // handleSubmit is a redux-form handler
       <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <h1>{this.props.name}'s Daily Report'</h1>
+        <h1>'s Daily Report</h1>
         <Link to="/dashboard">Back</Link>
 
         <Fieldset>
@@ -112,7 +111,8 @@ class DailyReport extends Component {
 const mapStateToProps = state => {
   console.log('Report state is:', state.report);
   return {
-    initialValues: state.report
+    initialValues: state.report,
+    children: state.groupList.children
   }
 }
 

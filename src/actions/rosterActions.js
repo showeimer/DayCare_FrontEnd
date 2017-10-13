@@ -17,7 +17,7 @@ export const fetchRoster = ()=> {
   }
 }
 
-export const createChild = values => {
+export const createChild = (values, callback) => {
   return (dispatch) => {
     const childInfo = JSON.stringify(values);
     console.log(values);
@@ -32,6 +32,7 @@ export const createChild = values => {
     })
     .then(response => response.json())
     .then(data => {
+      callback()
       return dispatch({
         type: CREATE_CHILD,
         payload: null
@@ -40,17 +41,18 @@ export const createChild = values => {
   }
 }
 
-export const deleteChild = id => {
+export const deleteChild = (id, callback) => {
+  console.log(callback);
   return (dispatch) => {
     fetch(`https://fast-lake-96101.herokuapp.com/daycares/child/delete/${id}`, {
       method: 'DELETE',
       credentials: 'include',
     })
-    .then(response => console.log(response))
+    .then(response => response);
   }
 }
 
-export const updateChild = (values, id) => {
+export const updateChild = (values, id, callback) => {
   return (dispatch) => {
 
     const childInfo = {
@@ -74,6 +76,7 @@ export const updateChild = (values, id) => {
     })
     .then(response => response.json())
     .then(data => {
+      callback()
       return dispatch({
         type: UPDATE_CHILD,
         payload: null

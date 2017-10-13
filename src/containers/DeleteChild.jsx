@@ -41,12 +41,12 @@ class DeleteChild extends Component {
 
 
   componentWillMount(){
-      console.log(this.props);
+    console.log(this.props);
   }
 
   handleRemoveChild(){
     console.log(this.props.deleteGroup);
-    this.props.deleteGroup(this.props.id)
+    this.props.deleteChild(this.props.id, this.props.history.push('/roster'))
     this.props.popup()
   }
 

@@ -54,8 +54,8 @@ class EditChild extends Component {
 
   onSubmit(values) {
     console.log(values);
-    this.props.updateChild(values, parseInt(this.props.match.params.id));
-    this.props.history.push('/roster');
+    this.props.updateChild(values, parseInt(this.props.match.params.id),
+    () => this.props.history.push('/roster'));
   }
 
   render() {
