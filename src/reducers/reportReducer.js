@@ -18,7 +18,8 @@ export default (state = INITIAL_STATE, action) => {
         itemsNeeded: action.payload.itemsNeeded,
         meals: action.payload.meals,
         naps: action.payload.naps,
-        note: action.payload.note
+        note: action.payload.note,
+        loaded: false
       }
 
     case LOAD_REPORT:

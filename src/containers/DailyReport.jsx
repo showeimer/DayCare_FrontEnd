@@ -58,9 +58,8 @@ class DailyReport extends Component {
   }
 
   onSubmit(values) {
-    this.props.updateReport(values, () => {
-      this.props.history.push('/dashboard')
-    });
+    this.props.updateReport(values, this.props.initialValues.id);
+    this.props.history.push('/dashboard')
   }
 
   render() {
