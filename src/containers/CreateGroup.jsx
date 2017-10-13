@@ -36,19 +36,10 @@ class CreateGroup extends Component {
     console.log(values);
     this.props.createGroup(values, this.props.daycareId)
     this.props.popup()
-
-
-    // this.props.createGroup(values);
   }
-
 
   render() {
     const { handleSubmit, daycareId, defaultValue } = this.props
-
-    // const renderOwner = ({ input, label, type, value, meta: { touched, error } }) => {
-    //   console.log('daycareId:', daycareId)
-    //   return <select {...input} value={daycareId}><option value={daycareId} /></select>
-    // };
 
     return (
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components'
-import { deleteGroup } from '../actions';
+import { deleteGroup, fetchGroups } from '../actions';
 
 // Import Router
 import { Link } from 'react-router-dom';
@@ -48,12 +48,13 @@ class DeleteGroup extends Component {
     console.log(this.props.deleteGroup);
     this.props.deleteGroup(this.props.id)
     this.props.popup()
+    // this.props.history.push('/manage/groups')
   }
 
   render() {
     return (
       <Div>
-        <Link onClick={this.handleRemoveGroup}to='/manage/groups'>
+        <Link onClick={this.handleRemoveGroup} to='/manage/groups'>
           Yes
         </Link>
         <No className='primary-button' onClick={this.props.popup}>No</No>
@@ -68,4 +69,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { deleteGroup })(DeleteGroup)
+export default connect(mapStateToProps, { deleteGroup, fetchGroups })(DeleteGroup)

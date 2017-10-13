@@ -9,7 +9,7 @@ import Child from './Child'
 import DeleteChild from './DeleteChild'
 
 // Redux Actions
-import { fetchRoster, deleteChild } from '../actions'
+import { fetchRoster, deleteChild, groupPopup } from '../actions'
 
 // Imported Styles:
 import '../styles/global.css'
@@ -98,7 +98,7 @@ class Roster extends Component {
     if(this.props.roster.length) {
       roster = this.props.roster.map((child, index) => {
         return <Child key={index} child={child}><Edit to={`/manage/children/edit/${child.id}`} />
-        <Delete onClick={this.handlePopup} id={child.id} /></Child>
+        <Delete onClick={deleteChild(child.id)} id={child.id} /></Child>
       })
     return roster;
     }
@@ -122,4 +122,4 @@ class Roster extends Component {
 const mapStateToProps = state => {
   return {roster: state.rosterList.roster}
 }
-export default connect(mapStateToProps, { fetchRoster, deleteChild })(Roster)
+export default connect(mapStateToProps, { fetchRoster, deleteChild, groupPopup })(Roster)

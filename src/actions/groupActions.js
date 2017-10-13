@@ -87,13 +87,13 @@ export const deleteGroup = id => {
       }
       throw new Error('Network response not ok.')
     })
-    .catch(error => console.log('propblem', error))
     .then(data => {
       return dispatch({
         type: DELETE_GROUP,
         payload: null
       })
     })
+    .catch(error => console.log('propblem', error))
   }
 }
 

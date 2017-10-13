@@ -168,7 +168,7 @@ class ManageGroups extends Component {
     }
     else {
       this.setState({
-        popup: <CreateGroup popup = {this.props.groupPopup}/>,
+        popup: <CreateGroup popup = {this.props.groupPopup} />,
         header: 'Create Group'
       })
     }

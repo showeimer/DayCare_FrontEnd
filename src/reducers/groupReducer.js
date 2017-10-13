@@ -26,11 +26,11 @@ export default (state = INITIAL_STATE, action) => {
     case RESET_CHILDREN:
       return {...state, children: []}
 
-    case CREATE_GROUP:
-      window.location.reload()
-
-    case DELETE_GROUP:
-      window.location.reload()
+    // case CREATE_GROUP:
+    //   window.location.reload()
+    //
+    // case DELETE_GROUP:
+    //   window.location.reload()
 
     case GROUP_POPUP:
       if (!state.popup) {

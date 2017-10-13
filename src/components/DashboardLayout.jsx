@@ -86,7 +86,7 @@ class DashboardLayout extends Component {
           <Header>
             <H1>inForm.</H1>
           </Header>
-      {/* {this.redirect()} */}
+      {this.redirect()}
       {this.props.children}
       </div>
     );
