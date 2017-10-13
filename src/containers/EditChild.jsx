@@ -32,6 +32,16 @@ class EditChild extends Component {
     this.props.fetchGroups();
   }
 
+  componentDidMount() {
+    const { children, initialize } = this.props;
+    const childId = parseInt(this.props.match.params.id);
+
+    function findChild(child) {
+      return child.id === childId
+    }
+    initialize(children.find(findChild));
+  }
+
   renderGroupAssignment() {
     let group = [];
     if(this.props.groups.length) {
@@ -44,7 +54,7 @@ class EditChild extends Component {
 
   onSubmit(values) {
     console.log(values);
-    this.props.updateChild(values);
+    this.props.updateChild(values, parseInt(this.props.match.params.id));
     this.props.history.push('/roster');
   }
 
@@ -104,8 +114,10 @@ class EditChild extends Component {
 }
 
 const mapStateToProps = state => {
+
   return {
-    groups: state.groupList.groups
+    groups: state.groupList.groups,
+    children: state.rosterList.roster
   }
 }
 

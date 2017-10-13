@@ -20,6 +20,7 @@ export const fetchRoster = ()=> {
 export const createChild = values => {
   return (dispatch) => {
     const childInfo = JSON.stringify(values);
+    console.log(values);
     fetch('https://fast-lake-96101.herokuapp.com/daycares/child', {
       method: 'POST',
       body: childInfo,
@@ -61,13 +62,23 @@ export const deleteChild = id => {
 
 export const updateChild = (values, id) => {
   return (dispatch) => {
-    const childInfo = JSON.stringify(values);
+
+    const childInfo = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      dob: values.dob,
+      parentFirstName: values.parentFirstName,
+      parentLastName: values.parentLastName,
+      parentEmail: values.parentEmail,
+      owner: {id: values.owner.id}
+    };
+
+    console.log('sending', childInfo);
     fetch(`https://fast-lake-96101.herokuapp.com/daycares/child/${id}`, {
       method: 'PUT',
-      body: childInfo,
+      body: JSON.stringify(childInfo),
       credentials: 'include',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     })
