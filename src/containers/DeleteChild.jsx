@@ -36,7 +36,7 @@ class DeleteChild extends Component {
   constructor(props){
     super(props)
 
-    this.handleRemoveGroup = this.handleRemoveGroup.bind(this)
+    this.handleRemoveChild = this.handleRemoveChild.bind(this)
   }
 
 
@@ -45,7 +45,6 @@ class DeleteChild extends Component {
   }
 
   handleRemoveChild(){
-    console.log(this.props.deleteGroup);
     this.props.deleteChild(this.props.id, this.props.history.push('/roster'))
     this.props.popup()
   }
@@ -53,7 +52,7 @@ class DeleteChild extends Component {
   render() {
     return (
       <Div>
-        <Link onClick={this.handleRemoveChild}to='/manage/groups'>
+        <Link onClick={this.handleRemoveChild} to='/manage/groups'>
           Yes
         </Link>
         <No className='primary-button' onClick={this.props.popup}>No</No>

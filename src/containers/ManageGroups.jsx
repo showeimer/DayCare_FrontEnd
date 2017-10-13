@@ -74,15 +74,7 @@ const Div = styled.div`
   height; 100%;
   position: relative;
 `
-const Overlay = styled.div`
-  background: rgba(0, 0, 0, 0.2);
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  display: none;
-  height: 100vh;
-`
-// BLOOOOCKCKKCKCKCK ^^^^
+
 const H1 = styled.h1`
   font-size: 30px;
   color: #fff;
@@ -104,20 +96,8 @@ const Add = styled.div`
     cursor: pointer;
   }
 `
-const CreateGroupPop = styled.div`
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  background: white;
-  width: 80%;
-  padding-bottom: 20px;
-  z-index: 5;
-  border-radius: 20px;
-
-`
+// POPUP STYLING
+// _______________________________
 const Header = styled.div`
   border-radius: 20px;
   width: 100%;
@@ -140,6 +120,29 @@ const Header = styled.div`
     text-align: center
   }
 `
+
+const CreateGroupPop = styled.div`
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background: white;
+  width: 80%;
+  padding-bottom: 20px;
+  z-index: 5;
+  border-radius: 20px;
+`
+const Overlay = styled.div`
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  display: none;
+  height: 100vh;
+`
+
 
 class ManageGroups extends Component {
   constructor(props){
@@ -198,7 +201,6 @@ class ManageGroups extends Component {
     return (
 
       <Div>
-
         <Overlay style={{'display': `${this.props.styling.display}`}}>
         </Overlay>
         <CreateGroupPop style={{'display': `${this.props.styling.flex}`}}>

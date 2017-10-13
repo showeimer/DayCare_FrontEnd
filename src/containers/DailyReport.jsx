@@ -71,7 +71,7 @@ class DailyReport extends Component {
     return (
       // handleSubmit is a redux-form handler
       <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <h1>'s Daily Report</h1>
+        <h1>s Daily Report</h1>
         <Link to="/dashboard">Back</Link>
 
         <Fieldset>
