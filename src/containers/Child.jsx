@@ -4,11 +4,6 @@ import styled from 'styled-components'
 
 // Imported Styles:
 import '../styles/global.css'
-// Imported Images:
-import pencil from '../styles/images/pencil.png'
-import dele from '../styles/images/dele.png'
-
-
 
 const Roster = styled.div`
   overflow: hidden;
@@ -45,27 +40,8 @@ const Modify = styled.div`
   display: flex;
   align-items: center;
 `
-const Edit = styled.span`
-  height: 30px;
-  width: 30px;
-  background: url(${pencil}) no-repeat;
-  background-position: center;
-  cursor: pointer;
-`
-const Delete = styled.span`
-  height: 30px;
-  width: 30px;
-  background: url(${dele}) no-repeat;
-  background-position: center;
-  margin: 10px;
-  cursor: pointer;
-`
-
 
 class Child extends Component {
-
-
-
 
   render(){
 
@@ -75,8 +51,7 @@ class Child extends Component {
           <img src="http://fillmurray.com/50/50" />
           <h1>{this.props.child.firstName} {this.props.child.lastName}</h1>
           <Modify>
-            <Edit></Edit>
-            <Delete></Delete>
+            {this.props.children}
           </Modify>
         </Roster>
       )

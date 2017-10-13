@@ -28,7 +28,7 @@ import Roster from './containers/Roster';
 import GroupChildren from './containers/GroupChildren';
 
 
-const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore)
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk, createLogger())(createStore)
 
 ReactDOM.render(
 

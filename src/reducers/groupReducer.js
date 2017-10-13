@@ -27,10 +27,10 @@ export default (state = INITIAL_STATE, action) => {
       return {...state, children: []}
 
     case CREATE_GROUP:
-      return window.location.reload()
+      window.location.reload()
 
     case DELETE_GROUP:
-      return window.location.reload()
+      window.location.reload()
 
     case GROUP_POPUP:
       if (!state.popup) {
@@ -59,7 +59,7 @@ export default (state = INITIAL_STATE, action) => {
       }
 
     case LOGOUT:
-      return INITIAL_STATE
+      return {...INITIAL_STATE}
 
     default:
       return state;
