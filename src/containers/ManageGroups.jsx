@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 // Components
 import CreateGroup from './CreateGroup';
+import DeleteGroup from './DeleteGroup';
 
 // Redux Actions:
 import { fetchGroups, groupPopup, deleteGroup } from '../actions'
@@ -57,6 +58,7 @@ const Delete = styled.span`
   background-size: fill;
   background-position: center;
   margin: 0 10px;
+  cursor: pointer;
 `
 
 const Ul = styled.ul`
@@ -74,11 +76,11 @@ const Div = styled.div`
 `
 const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.2);
-  position: fixed;
-  height: 100%;
+  position: absolute;
   width: 100%;
   z-index: 2;
   display: none;
+  height: 100vh;
 `
 // BLOOOOCKCKKCKCKCK ^^^^
 const H1 = styled.h1`
@@ -117,62 +119,102 @@ const CreateGroupPop = styled.div`
 
 `
 const Header = styled.div`
-width: 100%;
-height: 55px;
-span{
-  height: 20px;
-  width: 20px;
-  position: relative;
-  float: right;
-  bottom: 48px;
-  right: 12px;
-  background: url(${exit}) no-repeat;
-  background-size: 20px 20px;
-  cursor: pointer;
-}
-h1{
-  color: #000;
-  font-size: 22px;
-  padding: 20px;
-  text-align: center
-}
+  border-radius: 20px;
+  width: 100%;
+  height: 63px;
+  span{
+    height: 20px;
+    width: 20px;
+    position: relative;
+    float: right;
+    bottom: 51px;
+    right: 12px;
+    background: url(${exit}) no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer;
+  }
+  h1{
+    color: #000;
+    font-size: 22px;
+    padding: 20px 0;
+    text-align: center
+  }
 `
 
 class ManageGroups extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      popup: undefined,
+      header: undefined
+    }
+
+    this.handlePopup = this.handlePopup.bind(this)
+    this.handlePopup = this.handlePopup.bind(this)
+  }
+
+
+
+  handlePopup(e) {
+
+    console.log(e.target.id);
+
+    if (e.target.id !== 'add') {
+      this.setState({
+        popup: <DeleteGroup id={e.target.id} popup = {this.props.groupPopup}/>,
+        header: 'Delete Group?'
+      })
+    }
+    else {
+      this.setState({
+        popup: <CreateGroup popup = {this.props.groupPopup}/>,
+        header: 'Create Group'
+      })
+    }
+    this.props.groupPopup()
+  }
 
   componentWillMount(){
     this.props.fetchGroups();
   }
-  
-  render() {
 
+
+
+
+  render() {
+    let content = this.state.popup
+    let header = this.state.header
     let group = this.props.groups.map((group, index) => {
       return (
           <Li key={index}>
             <h1>{group.name}</h1>
             <div>
               <Edit></Edit>
-              <Delete></Delete>
+              <Delete onClick={this.handlePopup} id={group.id}></Delete>
+
             </div>
           </Li>
       )
     })
 
     return (
+
       <Div>
+
         <Overlay style={{'display': `${this.props.styling.display}`}}>
         </Overlay>
         <CreateGroupPop style={{'display': `${this.props.styling.flex}`}}>
           <Header>
-            <h1>Create a group</h1>
+            <h1>{header}</h1>
             <span onClick={this.props.groupPopup}></span>
           </Header>
-          <CreateGroup popup = {this.props.groupPopup}/>
+          {content}
         </CreateGroupPop>
         <Ul style={{'filter': `${this.props.styling.filter}`}}>
           <H1>Manage Groups</H1>
           <Add>
-            <div onClick={this.props.groupPopup}></div>
+            <div onClick={this.handlePopup} id={'add'}></div>
           </Add>
           {group}
         </Ul>

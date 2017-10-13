@@ -81,7 +81,13 @@ export const deleteGroup = id => {
         'Content-Type': 'application/json'
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw new Error('Network response not ok.')
+    })
+    .catch(error => console.log('propblem', error))
     .then(data => {
       return dispatch({
         type: DELETE_GROUP,

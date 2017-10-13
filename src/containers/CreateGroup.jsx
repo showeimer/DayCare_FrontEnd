@@ -24,8 +24,6 @@ const Form = styled.form`
     margin-top: 10px;
     cursor: pointer;
   }
-
-
 `
 
 class CreateGroup extends Component {

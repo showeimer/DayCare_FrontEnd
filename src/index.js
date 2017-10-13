@@ -38,10 +38,7 @@ ReactDOM.render(
           <Route exact path="/" component={Login}/>
           <Route path ="/register" component={Registration} />
           <DashboardLayout>
-<<<<<<< HEAD
             <Route path="/poop" component={DailyReport} />
-=======
->>>>>>> 6e9026eb5d861fb8d40b90904cc8a48cf834956b
             <Route path="/daycares/groups/:id/children" component={GroupChildren} />
             <Route path="/dashboard/:group" component={Group} />
             <Route path="/dashboard" component={Dashboard} />
