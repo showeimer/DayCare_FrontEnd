@@ -14,9 +14,6 @@ const Div = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
 `
 
 // renders general input fields

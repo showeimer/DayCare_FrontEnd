@@ -64,6 +64,7 @@ const Description = styled.div`
   width: 100%;
   input{
     width: 85%;
+    margin-left: 20px;
   }
 `
 

@@ -79,12 +79,10 @@ class DailyReport extends Component {
         </Fieldset>
 
         <Fieldset>
-          <legend>Diapers</legend>
           <FieldArray name="diapers" component={renderDiaper} />
         </Fieldset>
 
         <Fieldset>
-          <legend>Naps</legend>
           <FieldArray name="naps" component={renderNaps} />
         </Fieldset>
 
