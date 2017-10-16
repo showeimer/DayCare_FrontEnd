@@ -34,6 +34,10 @@ const Form = styled.form`
     margin: auto;
     cursor: pointer;
   }
+  textarea{
+    width: 100%;
+    border-radius: 10px;
+  }
 `
 
 const Fieldset = styled.div`
@@ -44,6 +48,16 @@ const Fieldset = styled.div`
     font-size: 22px;
     margin-bottom: 30px;
   }
+`
+
+const Legend = styled.h5`
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 30px;
+`
+const Button = styled.button`
+  width: 80%;
+  margin-bottom: 50px;
 `
 
 class DailyReport extends Component {
@@ -87,19 +101,19 @@ class DailyReport extends Component {
         </Fieldset>
 
         <Fieldset>
-          <legend>Items I Need</legend>
+          <Legend>Items I Need</Legend>
           <FieldArray name="itemsNeeded" component={renderItemsNeeded} />
         </Fieldset>
 
         <Fieldset>
-          <legend>Notes For Parents</legend>
+          <Legend>Notes For Parents</Legend>
           <Field
             name="note"
             component="textarea"
             type="textarea"
           />
         </Fieldset>
-        <button type="submit">Save</button>
+        <Button type="submit" className="primary-button">Save</Button>
       </Form>
     );
   }
