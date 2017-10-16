@@ -65,13 +65,17 @@ const Time = styled.div`
   }
 `
 const Details = styled.div`
-  background: blue;
+  margin: 20px 0 0 56px;
   display: flex;
   flex-direction: row;
   label{
+    margin-right: 20px;
     display: flex;
     align-items: center;
     color: #fff;
+  }
+  label div{
+    margin-right: 10px;
   }
 `
 

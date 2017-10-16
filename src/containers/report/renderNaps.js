@@ -9,6 +9,7 @@ import add from '../../styles/images/add.png'
 import delete_icon from '../../styles/images/delete_icon.png'
 
 const Event = styled.div`
+  width: 60%;
   display: flex;
   flex-direction: column;
 `
@@ -43,6 +44,15 @@ const Remove = styled.span`
   height: 26px;
   padding-right: 20px;
 `
+const Time = styled.div`
+  width: 100%;
+  margin-left: 30px;
+  input{
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+`
 
 
 export const renderNaps = ({fields, meta: { error } }) => {
@@ -57,19 +67,20 @@ export const renderNaps = ({fields, meta: { error } }) => {
         return (
           <Event key={index}>
             <Remove type="button" title="Remove Nap" onClick={() => fields.remove(index)}></Remove>
-
-            <Field
-              name={`${nap}.napStart`}
-              type="text"
-              component={renderField}
-              label="Time"
-            />
-            <Field
-              name={`${nap}.napEnd`}
-              type="text"
-              component={renderField}
-              label="Time"
-            />
+            <Time>
+              <Field
+                name={`${nap}.napStart`}
+                type="text"
+                component={renderField}
+                label="Start Time"
+              />
+              <Field
+                name={`${nap}.napEnd`}
+                type="text"
+                component={renderField}
+                label="End Time"
+              />
+            </Time>
           </Event>
         )
       })}

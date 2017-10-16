@@ -71,7 +71,7 @@ const Description = styled.div`
 const Amount = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0 0 20px 20px;
+  padding: 0 0 20px 30px;
   width: 100%;
   color: #fff;
   font-size: 18px;
