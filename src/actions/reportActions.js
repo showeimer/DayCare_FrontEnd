@@ -23,21 +23,22 @@ export const updateReport = (values, id) => {
   }
 }
 
-export const loadReport = id => {
-  return (dispatch) => {
-    fetch(`https://fast-lake-96101.herokuapp.com/daycares/reports`, {
-      credentials: 'include'
-    })
-    .then(response => response.json())
-    .then(data => {
-      return dispatch({
-        type: LOAD_REPORT,
-        payload: data
-      })
-    })
-    .catch(error => console.log(error))
-  }
-}
+// export const loadReport = id => {
+//   return (dispatch) => {
+//     fetch(`https://fast-lake-96101.herokuapp.com/daycares/reports`, {
+//       mode: 'no-cors',
+//       credentials: 'include'
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//       return dispatch({
+//         type: LOAD_REPORT,
+//         payload: data
+//       })
+//     })
+//     .catch(error => console.log(error))
+//   }
+// }
 
 // export const loadReport = callback => {
 //
@@ -55,4 +56,11 @@ export const loadReport = id => {
 //     dispatch(receiveReport(data));
 //     callback(data);
 //   }
+// }
+//
+// function receiveReport(data) {
+//     return {
+//       type: LOAD_REPORT,
+//       payload: data
+//     }
 // }
