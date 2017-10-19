@@ -47,8 +47,8 @@ const Edit = styled.span`
   height: 30px;
   width: 30px;
   background: url(${pencil}) no-repeat;
-  background-size: fill;
-  background-position: center
+  background-position: center;
+  cursor: pointer;
 `
 const Delete = styled.span`
   display: inline-block;
@@ -182,6 +182,15 @@ class ManageGroups extends Component {
   componentWillMount(){
     this.props.fetchGroups();
   }
+
+  componentWillReceiveProps(nextProps){
+    if (this.props.groups.length !== nextProps.groups.length) {
+      console.log('sdf');
+      this.props.fetchGroups()
+    }
+
+  }
+
 
   render() {
     let content = this.state.popup

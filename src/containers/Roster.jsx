@@ -153,6 +153,13 @@ class Roster extends Component {
     this.props.fetchRoster()
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.roster.length !== this.props.roster.length) {
+      this.props.fetchRoster()
+    }
+
+  }
+
   renderRoster() {
     let roster = [];
     if(this.props.roster.length) {

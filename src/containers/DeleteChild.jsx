@@ -44,15 +44,16 @@ class DeleteChild extends Component {
     console.log(this.props);
   }
 
-  handleRemoveChild(){
-    this.props.deleteChild(this.props.id, this.props.history.push('/roster'))
+  handleRemoveChild(props){
+    this.props.deleteChild(this.props.id)
     this.props.popup()
   }
+
 
   render() {
     return (
       <Div>
-        <Link onClick={this.handleRemoveChild} to='/manage/groups'>
+        <Link onClick={this.handleRemoveChild} to='/roster'>
           Yes
         </Link>
         <No className='primary-button' onClick={this.props.popup}>No</No>

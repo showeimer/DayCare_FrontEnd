@@ -43,11 +43,11 @@ export const updateReport = (values, id) => {
 export const loadReport = callback => {
 
   const data = {
-    diapers: [{time: "0800", type: "wet"}, {time: "1015", type: "dry"}],
+    diapers: [{time: "8:00am", type: "wet"}, {time: "10:15am", type: "dry"}],
     itemsNeeded: {wipes: true},
-    meals: [{type: "breakfast", food: "Bacon, Eggs, Toast", amount: "most"},{type: "lunch", food: "Sandwich", amount: "all"}],
-    naps: [{napStart: "1130", napEnd: "1230"}],
-    note: 'Billy had a really great day!'
+    meals: [{type: "breakfast", food: "Apple sauce", amount: "most"},{type: "lunch", food: "Sandwich", amount: "all"}],
+    naps: [{napStart: "11:30am", napEnd: "12:30pm"}],
+    note: ''
   };
 
   return function(dispatch) {
